@@ -4,5 +4,5 @@ using namespace std;
 
 int main()
 {
-    cout <<"\nLoc ";
+    cout <<"\nMy name is Huỳnh Hữu Lộc ";
 }
