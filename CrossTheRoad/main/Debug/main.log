@@ -1,5 +1,7 @@
 ﻿  Game.cpp
-C:\Users\Asus\Documents\GitHub\CrossTheRoad\CrossTheRoad\main\Game.cpp(7,14): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
-C:\Users\Asus\Documents\GitHub\CrossTheRoad\CrossTheRoad\main\Game.cpp(7,17): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
-C:\Users\Asus\Documents\GitHub\CrossTheRoad\CrossTheRoad\main\Game.cpp(13,12): warning C4101: 'hConsoleColor': unreferenced local variable
-  main.vcxproj -> C:\Users\Asus\Documents\GitHub\CrossTheRoad\CrossTheRoad\Debug\main.exe
+C:\Users\Huy\Documents\GitHub\CrossTheRoad\CrossTheRoad\main\Game.cpp(7,14): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+C:\Users\Huy\Documents\GitHub\CrossTheRoad\CrossTheRoad\main\Game.cpp(7,17): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+C:\Users\Huy\Documents\GitHub\CrossTheRoad\CrossTheRoad\main\Game.cpp(13,12): warning C4101: 'hConsoleColor': unreferenced local variable
+  main.cpp
+  Generating Code...
+  main.vcxproj -> C:\Users\Huy\Documents\GitHub\CrossTheRoad\CrossTheRoad\Debug\main.exe
