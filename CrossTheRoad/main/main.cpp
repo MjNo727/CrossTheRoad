@@ -7,7 +7,7 @@ int main() {
 	Game game;
 	game.ResizeConsole(1280, 720);
 	game.FixConsoleWindow();
-cout << 1;
+	cout << 1;
 	game.menu();
 	return 0;
 }
