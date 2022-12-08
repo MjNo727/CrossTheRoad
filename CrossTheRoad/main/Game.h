@@ -10,9 +10,20 @@
 #define UP_BLACK_PIECE char(223)
 #define VERTICAL_BLACK_PIECE char(219)
 
+//COLOR CODE
+#define COLOR_DEFAULT 7
+#define COLOR_BLUE 1
+#define COLOR_RED 4
+#define COLOR_BLACK 0
+#define COLOR_WHITE 15
+#define COLOR_BLUE_BACKGROUND 16
+#define COLOR_RED_BACKGROUND 64
+#define COLOR_WHITE_BACKGROUND 240
+
 #include "Library.h"
 #include "Map.h"
 #include "People.h"
+
 
 class Game {
 private:
@@ -30,7 +41,7 @@ public:
 
 
 	void menu();
-	void xxx(int x, int y);
+	void box(int x, int y);
 	//void newGame();
 	//void loadGame();
 	//void saveGame();

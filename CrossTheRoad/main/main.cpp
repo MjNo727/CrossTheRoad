@@ -7,7 +7,7 @@ int main() {
 	Game game;
 	game.ResizeConsole(1280, 720);
 	game.FixConsoleWindow();
-
+	
 	game.menu();
 	return 0;
 }
