@@ -11,8 +11,8 @@
 #define VERTICAL_BLACK_PIECE char(219)
 
 #include "Library.h"
-#include "MAP.h"
-
+#include "Map.h"
+#include "People.h"
 
 class Game {
 private:

@@ -1,5 +1,4 @@
-#ifndef _MAP_H_
-#define _MAP_H_
+#pragma once
 #include "Library.h"
 
 class Map {
@@ -12,5 +11,3 @@ public:
 	Map();
 	friend class Game;
 };
-
-#endif
