@@ -142,6 +142,8 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="People.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
