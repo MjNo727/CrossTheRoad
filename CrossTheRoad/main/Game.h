@@ -10,6 +10,11 @@
 #define UP_BLACK_PIECE char(223)
 #define VERTICAL_BLACK_PIECE char(219)
 
+#define LEFT_BORDER 4
+#define RIGHT_BORDER 118
+#define TOP_BORDER 1
+#define BOTTOM_BORDER 36
+
 #include "Library.h"
 #include "Map.h"
 #include "People.h"

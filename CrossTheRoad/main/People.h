@@ -6,16 +6,16 @@
 #define VERTICAL_BLACK_PIECE char(219)
 #define MIDDLE_SMALL_BLACK_PIECE char(254)
 class People {
-	int x, y; //
+	int mX, mY; //
 	bool mState; //dead or alive
 	int height;
 	int width;
-	char** person;
+	vector<char, char>people;
 	bool checkAlive;
 public:
 
 	People();
-	People(int x, int y);
+	People(int mX, int mY);
 	void createPlayer();
 	int getHeight();
 	int getWidth();
@@ -27,6 +27,6 @@ public:
 	void Down(int);
 	bool isFinish();
 	bool isAlive();
-	~People();
+	
 };
 

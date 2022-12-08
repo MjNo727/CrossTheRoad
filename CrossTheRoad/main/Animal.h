@@ -9,5 +9,5 @@ public:
     ANIMAL();
     ANIMAL(int x);
     int isWhat();
-    void sound();
+    void sound()    
 };
