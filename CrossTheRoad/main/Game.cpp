@@ -17,17 +17,22 @@ void TxtColor(int color) {
 void clrscr() {
     COORD topLeft = { 0, 0 };
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+
     CONSOLE_SCREEN_BUFFER_INFO screen;
     DWORD written;
 
+	
     GetConsoleScreenBufferInfo(console, &screen);
+	
+
     FillConsoleOutputCharacterA(
         console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written
     );
     FillConsoleOutputAttribute(
-        console, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE,
+        console, BACKGROUND_GREEN | BACKGROUND_RED | BACKGROUND_BLUE | BACKGROUND_INTENSITY,
         screen.dwSize.X * screen.dwSize.Y, topLeft, &written
     );
+
     SetConsoleCursorPosition(console, topLeft);
 }
 
@@ -60,7 +65,8 @@ void Game::FixConsoleWindow() {
 }
 
 void Game::fillMenu() {
-	TxtColor(15);
+	
+	TxtColor(240);
 	for (int i = 18; i < 28; ++i) {
 		GoToXY(74, i);
 		for (int j = 0; j < 22; ++j) {
@@ -69,7 +75,7 @@ void Game::fillMenu() {
 	}
 }
 
-void Game::xxx(int x, int y )
+void Game::box(int x, int y )
 {
 	GoToXY(x + 1, y);
 	for (int i = 0; i < 20; ++i)
@@ -88,27 +94,28 @@ void Game::xxx(int x, int y )
 	for (int i = 0; i < 20; ++i)
 		cout << DOWN_BLACK_PIECE;
 }
+
 void Game::menu() {
 	while (true) {
 		clrscr();
 		
 		NoCursorType();
-		TxtColor(15);
+		TxtColor(240);// box
 		int x = 74;
 		int y = 18;
 		
-		xxx(x,y);
-		TxtColor(15);
-		GoToXY(x + 7, y + 1); cout << "NEW GAME";
-		GoToXY(x + 5, y + 3); cout << "LOADING GAME";
-		GoToXY(x + 7, y + 5); cout << "SETTINGS";
-		GoToXY(x + 9, y + 7); cout << "EXIT";
+		box(x,y);
+		TxtColor(240);
+		GoToXY(x + 6, y + 1); cout << " NEW GAME ";
+		GoToXY(x + 4, y + 3); cout << " LOADING GAME ";
+		GoToXY(x + 6, y + 5); cout << " SETTINGS ";
+		GoToXY(x + 8, y + 7); cout << " EXIT ";
 
 		int cnt = 0;
 		//checkLoadGame = false;
 		while (true) {
 			char choice = _getch();
-			TxtColor(15);
+			TxtColor(240);
 			GoToXY(x + 6, y + 1); cout << " NEW GAME ";
 			GoToXY(x + 4, y + 3); cout << " LOADING GAME ";
 			GoToXY(x + 6, y + 5); cout << " SETTINGS ";
@@ -130,30 +137,31 @@ void Game::menu() {
 			}
 
 			if (cnt == 1) {
-				TxtColor(240);
+				TxtColor(15);
 				GoToXY(x + 6, y + 1); cout << " NEW GAME ";
 				if (choice == KEY_ENTER) {
 					//newGame();
 
 					NoCursorType();
-					TxtColor(15);
+					TxtColor(240);
 					fillMenu();
-					xxx(x, y);
+					box(x, y);
 					GoToXY(x + 6, y + 1); cout << " RETURN ";
 					while (true)
 					{
 						
 						char choice = _getch();
-						TxtColor(240);
+						TxtColor(15);
 						GoToXY(x + 6, y + 1); cout << "RETURN ";
 						
 						if (choice == KEY_ENTER) {
 							fillMenu();
-							xxx(x, y);
+							box(x, y);
+							TxtColor(15);
 							GoToXY(x + 7, y + 1); cout << "NEW GAME";
 							TxtColor(240);
 							GoToXY(x + 5, y + 3); cout << "LOADING GAME";
-							TxtColor(15);
+							
 							GoToXY(x + 6, y + 5); cout << " SETTINGS ";
 							GoToXY(x + 9, y + 7); cout << "EXIT";
 							break;
@@ -165,29 +173,29 @@ void Game::menu() {
 				}
 			}
 			if (cnt == 2) {
-				TxtColor(240);
+				TxtColor(15);
 				GoToXY(x + 4, y + 3); cout << " LOADING GAME ";
 				if (choice == KEY_ENTER) {
 
 					//loadGame();
 					TxtColor(15);
 					fillMenu();
-					xxx(x, y);
+					box(x, y);
 					GoToXY(x + 6, y + 1); cout << " Exit ";
 					while (true)
 					{
 
 						char choice2 = _getch();
-						TxtColor(240);
+						TxtColor(15);
 						GoToXY(x + 6, y + 1); cout << "Exit ";
 
 						if (choice2 == KEY_ENTER) {
 							fillMenu();
-							xxx(x, y);
+							box(x, y);
 							GoToXY(x + 7, y + 1); cout << "NEW GAME";
-							TxtColor(240);
-							GoToXY(x + 5, y + 3); cout << "LOADING GAME";
 							TxtColor(15);
+							GoToXY(x + 5, y + 3); cout << "LOADING GAME";
+							TxtColor(240);
 							GoToXY(x + 6, y + 5); cout << " SETTINGS ";
 							GoToXY(x + 9, y + 7); cout << "EXIT";
 							break;
@@ -197,28 +205,29 @@ void Game::menu() {
 				}
 			}
 			if (cnt == 3) {
-				TxtColor(240);
+				TxtColor(15);
 				GoToXY(x + 6, y + 5); cout << " SETTINGS ";
 				if (choice == KEY_ENTER) {
 					//settings();
 					TxtColor(15);
 					fillMenu();
-					xxx(x, y);
+					box(x, y);
 					GoToXY(x + 6, y + 1); cout << " Exit ";
 					while (true)
 					{
 						char choice2 = _getch();
-						TxtColor(240);
+						TxtColor(15);
 						GoToXY(x + 6, y + 1); cout << "Exit ";
 
 						if (choice2 == KEY_ENTER) {
 							fillMenu();
-							xxx(x, y);
-							TxtColor(240);
+							box(x, y);
+							
 							GoToXY(x + 7, y + 1); cout << "NEW GAME";
-							TxtColor(15);
 							GoToXY(x + 5, y + 3); cout << "LOADING GAME";
+							TxtColor(15);
 							GoToXY(x + 6, y + 5); cout << " SETTINGS ";
+							TxtColor(240);
 							GoToXY(x + 9, y + 7); cout << "EXIT";
 							break;
 							
@@ -227,7 +236,7 @@ void Game::menu() {
 				}
 			}
 			if (cnt == 4) {
-				TxtColor(240);
+				TxtColor(15);
 				GoToXY(x + 8, y + 7); cout << " EXIT ";
 				if (choice == KEY_ENTER) {
 					TxtColor(15);
@@ -242,7 +251,7 @@ void Game::menu() {
 		//		clrscr();
 		//		logoCrossyRoad();
 		//		loadingBar();
-		//		TxtColor(15);
+		//		TxtColor(4);
 		//		newGame();
 		//	}
 		//	else

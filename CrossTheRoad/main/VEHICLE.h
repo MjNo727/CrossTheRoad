@@ -1,16 +1,16 @@
-#ifndef VEHICLE_H
+#ifndef Vehicle_H
 #define VEHICLE_H
 
-#include "ENEMY.h"
+#include "Obstacle.h"
 
-class VEHICLE : public ENEMY
+class Vehicle : public Obstacle
 {
-    public:
-        VEHICLER();
-        VEHICLE(int x);
-        int isWhat();
-        void sound();
-    
+public:
+	Vehicle();
+	Vehicle(int x);
+	int isWhat();
+	void sound();
+
 };
 
 #endif
