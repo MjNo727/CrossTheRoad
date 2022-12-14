@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 	Game game;
-	game.ResizeConsole(1280, 720);
+	game.ResizeConsole(1366, 768);
 	game.FixConsoleWindow();
 	
 	game.menu();

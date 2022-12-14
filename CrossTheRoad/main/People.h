@@ -1,32 +1,50 @@
-#pragma once
+#ifndef _PLAYER_H_
+#define _PLAYER_H_
+
 #include "Library.h"
+//#include "ENEMY.h"
+
 #define DOWN_MAP 34
 #define LEFT_MAP 4
 #define RIGHT_MAP 113
 #define VERTICAL_BLACK_PIECE char(219)
 #define MIDDLE_SMALL_BLACK_PIECE char(254)
-class People {
-	int mX, mY; //
-	bool mState; //dead or alive
-	int height;
-	int width;
-	vector<char, char>people;
-	bool checkAlive;
-public:
 
+class People {
+private:
+	int x, y; // position
+	int height = 3;
+	int width = 5;
+
+	vector<string> people;			// player
+	vector<string> blank;
+	bool checkDead;
+public:
 	People();
-	People(int mX, int mY);
-	void createPlayer();
+	People(int x, int y);
+
+
+	void createPeople();
+	void createBlank();
 	int getHeight();
 	int getWidth();
 	int getX();
 	int getY();
-	void Up(int);
-	void Left(int);
-	void Right(int);
-	void Down(int);
-	bool isFinish();
-	bool isAlive();
-	
+	void Up();
+	void Down();
+	void Left();
+	void Right();
+	vector<string>getPeople();
+	vector<string>getBlank();
+	void setCheckDead();
+	bool getCheckDead();
+
+	// bool checkCollision(ENEMY& enemy);
+
+	friend class MAP;
 };
+
+
+#endif
+
 
