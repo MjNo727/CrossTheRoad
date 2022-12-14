@@ -427,7 +427,7 @@ void Game::newGame() {
 			//map.generateMap(frameTime);
 		}
 		else if (checkPauseGame == true) {
-			TextColor(12); GoToXY(133, 23); cout << MIDDLE_SMALL_BLACK_PIECE << " PAUSE GAME " << endl;
+			TextColor(246); GoToXY(133, 23); cout << MIDDLE_SMALL_BLACK_PIECE << " PAUSE GAME " << endl;
 			TextColor(240);
 			GoToXY(134, 25); cout << " RESUME " << endl;
 			GoToXY(134, 27); cout << "  EXIT  " << endl;
