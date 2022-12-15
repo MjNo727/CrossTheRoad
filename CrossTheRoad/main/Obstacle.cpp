@@ -4,9 +4,8 @@ Obstacle::Obstacle() {
 	int mX = 0;
 	this->form = 1;
 }
-Obstacle::Obstacle(int x, bool form) {
-	int mX = x;
-	this->form = form;
+Obstacle::Obstacle(int x, bool form) : mX(x), form(form) {
+
 }
 void Obstacle::renderShape(int y)
 {
