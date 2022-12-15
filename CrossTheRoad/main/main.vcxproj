@@ -29,7 +29,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -139,21 +139,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Animal.h" />
-    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Car.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="Owl.h" />
     <ClInclude Include="People.h" />
-    <ClInclude Include="Vehicle.h" />
+    <ClInclude Include="Rat.h" />
+    <ClInclude Include="Snake.h" />
+    <ClInclude Include="Truck.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Car.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="Owl.cpp" />
     <ClCompile Include="People.cpp" />
+    <ClCompile Include="Rat.cpp" />
+    <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="Truck.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

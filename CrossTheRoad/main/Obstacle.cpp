@@ -1,7 +1,16 @@
 #include "Obstacle.h"
 #include "Game.h"
+Obstacle::Obstacle() {
+	int mX = 0;
+	this->form = 1;
+}
+Obstacle::Obstacle(int x, bool form) {
+	int mX = x;
+	this->form = form;
+}
 void Obstacle::renderShape(int y)
 {
+	TextColor(240);
 	int leftMost = 0;
 	int pos = mX;
 	if (mX < LEFT_BORDER) {

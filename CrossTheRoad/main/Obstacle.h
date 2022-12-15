@@ -4,8 +4,10 @@ class Obstacle {
 protected:
 	vector<string>shape;
 	int mX;
-	bool type; // Animal = 1, Vehicle = 0
+	bool form; // Animal = 1, Vehicle = 0
 public:
+	Obstacle();
+	Obstacle(int x, bool form);
 	void renderShape(int y);
 	bool checkOut();
 	bool checkSpawn();
