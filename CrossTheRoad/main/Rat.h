@@ -7,7 +7,7 @@ public:
 	Rat();
 	Rat(int x);
 	int isForm();
-	void sound();
+	//void sound();
 
 };
 
