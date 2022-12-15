@@ -29,7 +29,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -141,11 +141,8 @@
   <ItemGroup>
     <ClInclude Include="Car.h" />
     <ClInclude Include="Game.h" />
-<<<<<<< HEAD
     <ClInclude Include="Level.h" />
-=======
     <ClInclude Include="Lane.h" />
->>>>>>> b269015c3ff58d1306c9c1266f492c855b96c391
     <ClInclude Include="Library.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Obstacle.h" />
@@ -158,11 +155,8 @@
   <ItemGroup>
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="Game.cpp" />
-<<<<<<< HEAD
     <ClCompile Include="Level.cpp" />
-=======
     <ClCompile Include="Lane.cpp" />
->>>>>>> b269015c3ff58d1306c9c1266f492c855b96c391
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Obstacle.cpp" />

@@ -20,6 +20,5 @@ public:
     int moveObstacle(int frameTime);
 
     friend class Map;
-    friend class Lane;
     friend class Game;
 };
