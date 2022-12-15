@@ -93,18 +93,18 @@ void People::setCheckDead() {
 bool People::getCheckDead() {
 	return checkDead;
 }
-//
-//bool People::checkCollision(ENEMY& enemy) {
-//
-//	int length = enemy.shape[0].length();
-//
-//	if ((enemy.x + enemy.type <= x && x <= enemy.x + enemy.type + length - 2) || (enemy.x + enemy.type <= x + 4 && x + 4 <= enemy.x + enemy.type + length - 2))
-//	{
-//		enemy.sound();
-//		return true;
-//	}
-//
-//
-//
-//	return false;
-//}
+
+bool People::checkCollision(Obstacle& obstacle) {
+
+	int length = obstacle.shape[0].length();
+
+	if ((obstacle.mX + obstacle.form <= x && x <= obstacle.mX + obstacle.form + length - 2) || (obstacle.mX + obstacle.form <= x + 4 && x + 4 <= obstacle.mX + obstacle.form + length - 2))
+	{
+		//obstacle.sound();
+		return true;
+	}
+
+
+
+	return false;
+}

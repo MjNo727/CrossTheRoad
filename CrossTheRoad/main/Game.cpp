@@ -404,7 +404,7 @@ void Game::newGame() {
 	if (checkLoadGame == false)
 		map.initializeMap();
 
-	//map.initialRender();
+	map.initialRender();
 
 	checkLoadGame = false;
 	checkPauseGame = false;
@@ -487,7 +487,7 @@ void Game::newGame() {
 				//saveGame();
 				clrscr();
 				map.printMap();
-				//map.initialRender();
+				map.initialRender();
 				TextColor(246);
 				GoToXY(142, 8); cout << round;
 				GoToXY(152, 8);
@@ -510,7 +510,7 @@ void Game::newGame() {
 				else {
 					clrscr();
 					map.printMap();
-					//map.initialRender();
+					map.initialRender();
 					TextColor(246);
 					GoToXY(142, 8); cout << round;
 					GoToXY(152, 8);

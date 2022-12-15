@@ -2,7 +2,7 @@
 #define _PLAYER_H_
 
 #include "Library.h"
-//#include "ENEMY.h"
+#include "Obstacle.h"
 
 #define DOWN_MAP 34
 #define LEFT_MAP 4
@@ -39,7 +39,7 @@ public:
 	void setCheckDead();
 	bool getCheckDead();
 
-	// bool checkCollision(ENEMY& enemy);
+	bool checkCollision(Obstacle& obstacle);
 
 	friend class MAP;
 };
