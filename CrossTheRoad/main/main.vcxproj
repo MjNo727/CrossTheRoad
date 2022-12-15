@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClInclude Include="Car.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Lane.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Obstacle.h" />
@@ -153,6 +154,7 @@
   <ItemGroup>
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Lane.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Obstacle.cpp" />

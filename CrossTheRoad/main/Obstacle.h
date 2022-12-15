@@ -16,4 +16,5 @@ public:
 	friend class MAP;
 	friend class People;
 	friend class Game;
+	friend class Lane;
 };
