@@ -233,12 +233,12 @@ void Game::settings() {
 				if (checkMute == false) {
 					TextColor(240);
 					GoToXY(x + 13, y + 3); cout << "ON ";
-					//PlaySound(TEXT("Sound\\Sister'sNoise.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+					PlaySound(TEXT("Sound\\Theme.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 				}
 				else {
 					TextColor(240);
 					GoToXY(x + 13, y + 3); cout << "OFF";
-					//PlaySound(NULL, NULL, SND_ASYNC);
+					PlaySound(NULL, NULL, SND_ASYNC);
 				}
 			}
 		}
@@ -283,7 +283,7 @@ void Game::menu() {
 		clrscr();
 		logoCrossyRoad();
 		if (checkMute == false)
-			//PlaySound(TEXT("Sound\\Sister'sNoise.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+			PlaySound(TEXT("Sound\\Theme.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 		NoCursorType();
 		TextColor(240);
 		int x = 84;
