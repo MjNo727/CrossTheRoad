@@ -50,7 +50,7 @@ public:
 	void box(int x, int y);
 
 	void newGame();
-
+	void exitGame(thread* t);
 	void settings();
 };
 

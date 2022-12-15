@@ -454,7 +454,7 @@ void Game::newGame() {
 					GoToXY(134, 25); cout << " RESUME " << endl;
 					if (choice == KEY_ENTER) {
 						checkPauseGame = false;
-						TextColor(0);
+						TextColor(240);
 						GoToXY(133, 23); cout << "             " << endl;
 						GoToXY(134, 25); cout << "        " << endl;
 						GoToXY(134, 27); cout << "        " << endl;
@@ -467,7 +467,7 @@ void Game::newGame() {
 					GoToXY(134, 27); cout << "  EXIT  " << endl;
 					if (choice == KEY_ENTER) {
 						checkPauseGame = false;
-						TextColor(0);
+						TextColor(240);
 						GoToXY(133, 23); cout << "             " << endl;
 						GoToXY(134, 25); cout << "        " << endl;
 						GoToXY(134, 27); cout << "        " << endl;
@@ -542,4 +542,9 @@ void Game::newGame() {
 		}
 
 	}
+}
+void Game::exitGame(thread* t) {
+		system("cls");
+		checkPauseGame = false;
+		t->join();
 }
