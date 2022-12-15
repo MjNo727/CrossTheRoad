@@ -48,6 +48,9 @@
     <ClInclude Include="Lane.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -65,6 +68,9 @@
     <ClCompile Include="Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="Level.cpp">
+=======
     <ClCompile Include="Rat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -81,6 +87,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Lane.cpp">
+>>>>>>> b269015c3ff58d1306c9c1266f492c855b96c391
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
