@@ -8,7 +8,7 @@ Truck::Truck() {
 
 }
 
-Truck::Truck(int x) : Obstacle(x, 0) {
+Truck::Truck(int x) : Obstacle(x, 1) {
     shape.push_back("TruckTruckTruckTruckTruck ");
     shape.push_back("TruckTruckTruckTruckTruck ");
     shape.push_back("TruckTruckTruckTruckTruck ");
