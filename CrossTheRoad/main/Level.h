@@ -23,7 +23,7 @@ public:
     Obstacle* randNewObstacle(int x, short direction);
     int getLevel();
 
-    friend class LANE;
-    friend class MAP;
+    friend class Lane;
+    friend class Map;
 
 };
