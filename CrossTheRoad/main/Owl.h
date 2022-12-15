@@ -1,3 +1,4 @@
+#pragma once
 #include "Obstacle.h"
 
 //Starting x position for the Owl is -6

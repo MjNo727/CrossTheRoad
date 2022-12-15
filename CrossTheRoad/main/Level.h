@@ -2,7 +2,11 @@
 
 #include "Library.h"
 #include "Obstacle.h"
-
+#include "Car.h"
+#include "Owl.h"
+#include "Rat.h"
+#include "Snake.h"
+#include "Truck.h"
 class Level
 {
 private:

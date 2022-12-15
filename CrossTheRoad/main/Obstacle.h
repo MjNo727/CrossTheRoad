@@ -13,7 +13,7 @@ public:
 	bool checkSpawn();
 	virtual int isForm() = 0;
 	//virtual void sound() = 0;
-	friend class MAP;
+	friend class Map;
 	friend class People;
 	friend class Game;
 	friend class Lane;

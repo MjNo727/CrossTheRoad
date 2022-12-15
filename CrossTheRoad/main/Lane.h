@@ -19,9 +19,7 @@ public:
     void renderTrafficLight();
     int moveObstacle(int frameTime);
 
-    friend class Game;
     friend class Map;
-
     friend class Lane;
-    friend class People;
+    friend class Game;
 };

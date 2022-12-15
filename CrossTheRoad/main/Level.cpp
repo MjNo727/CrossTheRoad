@@ -1,7 +1,7 @@
 #include "Level.h"
 #include "Game.h"
 
-Level::Level(bool mode, int level) : mode(mode), level(level), currObstacle(0))
+Level::Level(bool mode, int level) : mode(mode), level(level), currObstacle(0)
 {
     generateLevel();
 }

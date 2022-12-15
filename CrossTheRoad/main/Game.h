@@ -29,6 +29,13 @@
 #include "Library.h"
 #include "Map.h"
 #include "People.h"
+#include "Car.h"
+#include "Rat.h"
+#include "Owl.h"
+#include "Snake.h"
+#include "Truck.h"
+#include "Lane.h"
+#include "Level.h"
 
 class Game {
 private:
