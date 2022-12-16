@@ -10,5 +10,9 @@
 #include <random>
 #include <fstream>
 #include <thread>
+#include <mmsystem.h>
+
+
+#pragma comment (lib, "winmm.lib")
 using namespace std;
 #endif

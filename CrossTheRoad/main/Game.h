@@ -16,7 +16,6 @@
 #define TOP_BORDER 1
 #define BOTTOM_BORDER 36
 
-//
 #define HORIZONTAL_PALE_PIECE char(205);
 #define VERTICAL_PALE_PIECE char(186);
 #define UP_LEFT_CORNER_PALE_PIECE char(201)
@@ -36,6 +35,7 @@
 #include "Truck.h"
 #include "Lane.h"
 #include "Level.h"
+#include "Obstacle.h"
 
 class Game {
 private:
@@ -44,7 +44,6 @@ private:
 	bool checkMute = false;			// Mute backgound song, default: false
 	bool checkLoadGame;
 	bool checkPauseGame;	// default: false
-	//
 
 public:
 	
@@ -57,7 +56,7 @@ public:
 	void box(int x, int y);
 
 	void newGame();
-	void exitGame(thread* t);
+	/*void exitGame(thread* t);*/
 	void settings();
 };
 

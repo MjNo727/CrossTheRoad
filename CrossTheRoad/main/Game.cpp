@@ -233,12 +233,12 @@ void Game::settings() {
 				if (checkMute == false) {
 					TextColor(240);
 					GoToXY(x + 13, y + 3); cout << "ON ";
-					//PlaySound(TEXT("Sound\\Theme.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+					PlaySound(TEXT("Sound\\Theme.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 				}
 				else {
 					TextColor(240);
 					GoToXY(x + 13, y + 3); cout << "OFF";
-					//PlaySound(NULL, NULL, SND_ASYNC);
+					PlaySound(NULL, NULL, SND_ASYNC);
 				}
 			}
 		}
@@ -283,7 +283,7 @@ void Game::menu() {
 		clrscr();
 		logoCrossyRoad();
 		if (checkMute == false)
-			//PlaySound(TEXT("Sound\\Theme.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+			PlaySound(TEXT("Sound\\Theme.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 		NoCursorType();
 		TextColor(240);
 		int x = 84;
@@ -546,7 +546,7 @@ void Game::newGame() {
 			checkPauseGame = false;
 			TextColor(240);
 			clrscr();
-			//PlaySound(TEXT("Sound\\Explosion.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			PlaySound(TEXT("Sound\\GameOver.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			for (int i = 0; i < 16; ++i) {
 				clrscr();
 				TextColor(i);
@@ -580,7 +580,7 @@ void Game::newGame() {
 			}
 
 			round++;
-			//PlaySound(TEXT("Sound\\LevelUp.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			PlaySound(TEXT("Sound\\LevelUp.wav"), NULL, SND_FILENAME | SND_ASYNC);
 
 			GoToXY(57, 2); cout << "LEVEL UP!!!";
 			Sleep(1500);
@@ -596,7 +596,7 @@ void Game::newGame() {
 			map.initialRender();
 			map.drawPlayer();
 			if (checkMute == false)
-				//PlaySound(TEXT("Sound\\Sister'sNoise.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+				PlaySound(TEXT("Sound\\Theme.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 
 			while (_kbhit())
 				_getch();

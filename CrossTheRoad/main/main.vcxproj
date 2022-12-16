@@ -153,7 +153,6 @@
     <ClInclude Include="Rat.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="Truck.h" />
-    <ClInclude Include="Vehicle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Car.cpp" />
