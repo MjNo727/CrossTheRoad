@@ -1,3 +1,4 @@
+#pragma once
 #include "Obstacle.h"
 
 //Starting x position for the Owl is -6
@@ -8,6 +9,6 @@ public:
     Owl();
     Owl(int x);
     int isForm();
-    void sound();
+    //void sound();
 
 };

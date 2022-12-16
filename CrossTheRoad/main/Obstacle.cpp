@@ -4,23 +4,17 @@ Obstacle::Obstacle() {
 	int mX = 0;
 	this->form = 1;
 }
-Obstacle::Obstacle(int x, bool form) {
-	int mX = x;
-	this->form = form;
+Obstacle::Obstacle(int x, bool form) : mX(x), form(form) {
+
 }
 void Obstacle::renderShape(int y)
 {
 	TextColor(240);
-	int leftMost = 0;
-	int pos = mX;
-	if (mX < LEFT_BORDER) {
-		leftMost = LEFT_BORDER - mX;
-		pos = LEFT_BORDER;
-	}
-	int rightMost = shape[0].length() + 1;
-	if (mX + shape[0].length() > RIGHT_BORDER) {
-		rightMost = RIGHT_BORDER - mX + 1;
-	}
+	int leftMost = mX < LEFT_BORDER ? LEFT_BORDER - mX : 0;
+
+	int pos = mX < LEFT_BORDER ? LEFT_BORDER : mX;
+
+	int rightMost = mX + shape[0].length() > RIGHT_BORDER ? RIGHT_BORDER - mX + 1 : shape[0].length() + 1;
 	if (leftMost >= rightMost) {
 		return;
 	}

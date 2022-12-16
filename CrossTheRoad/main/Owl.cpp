@@ -2,18 +2,17 @@
 
 
 Owl::Owl() {
-    shape.push_back("OwlOwlOwlOwlOwl ");
-    shape.push_back("OwlOwlOwlOwlOwl ");
-    shape.push_back("OwlOwlOwlOwlOwl ");
+    shape.push_back(" OwlOwlOwlOwlOwl ");
+    shape.push_back(" OwlOwlOwlOwlOwl ");
+    shape.push_back(" OwlOwlOwlOwlOwl ");
 
 }
 
 Owl::Owl(int x) : Obstacle(x, 0) {
-    shape.push_back("OwlOwlOwlOwlOwl ");
-    shape.push_back("OwlOwlOwlOwlOwl ");
-    shape.push_back("OwlOwlOwlOwlOwl ");
+    shape.push_back(" OwlOwlOwlOwlOwl ");
+    shape.push_back(" OwlOwlOwlOwlOwl ");
+    shape.push_back(" OwlOwlOwlOwlOwl ");
 }
-
 
 
 

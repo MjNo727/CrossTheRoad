@@ -233,12 +233,12 @@ void Game::settings() {
 				if (checkMute == false) {
 					TextColor(240);
 					GoToXY(x + 13, y + 3); cout << "ON ";
-					PlaySound(TEXT("Sound\\Theme.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+					//PlaySound(TEXT("Sound\\Theme.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 				}
 				else {
 					TextColor(240);
 					GoToXY(x + 13, y + 3); cout << "OFF";
-					PlaySound(NULL, NULL, SND_ASYNC);
+					//PlaySound(NULL, NULL, SND_ASYNC);
 				}
 			}
 		}
@@ -283,7 +283,7 @@ void Game::menu() {
 		clrscr();
 		logoCrossyRoad();
 		if (checkMute == false)
-			PlaySound(TEXT("Sound\\Theme.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+			//PlaySound(TEXT("Sound\\Theme.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 		NoCursorType();
 		TextColor(240);
 		int x = 84;
@@ -394,7 +394,7 @@ void Game::newGame() {
 	if (checkLoadGame == false) {
 		map.~Map();
 		new(&map) Map();
-		//new(&map.level) LEVEL(mode, 1);
+		new(&map.level) Level(mode, 1);
 	}
 
 	clrscr();
@@ -404,12 +404,12 @@ void Game::newGame() {
 	if (checkLoadGame == false)
 		map.initializeMap();
 
-	//map.initialRender();
+	map.initialRender();
 
 	checkLoadGame = false;
 	checkPauseGame = false;
 	int frameTime = 0;
-	int round = 1; //map.level.getLevel();
+	int round = map.level.getLevel();
 	TextColor(246);
 	GoToXY(142, 8);
 	cout << round;
@@ -424,7 +424,7 @@ void Game::newGame() {
 		if (checkPauseGame == false) {
 			if (++frameTime == INT_MAX)
 				frameTime = 0;
-			//map.generateMap(frameTime);
+			map.generateMap(frameTime);
 		}
 		else if (checkPauseGame == true) {
 			TextColor(246); GoToXY(133, 23); cout << MIDDLE_SMALL_BLACK_PIECE << " PAUSE GAME " << endl;
@@ -487,7 +487,7 @@ void Game::newGame() {
 				//saveGame();
 				clrscr();
 				map.printMap();
-				//map.initialRender();
+				map.initialRender();
 				TextColor(246);
 				GoToXY(142, 8); cout << round;
 				GoToXY(152, 8);
@@ -510,7 +510,7 @@ void Game::newGame() {
 				else {
 					clrscr();
 					map.printMap();
-					//map.initialRender();
+					map.initialRender();
 					TextColor(246);
 					GoToXY(142, 8); cout << round;
 					GoToXY(152, 8);
@@ -541,10 +541,65 @@ void Game::newGame() {
 			map.drawPlayer();
 		}
 
+		if (map.checkCollision()) {
+			Sleep(1500);
+			checkPauseGame = false;
+			TextColor(240);
+			clrscr();
+			//PlaySound(TEXT("Sound\\Explosion.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			for (int i = 0; i < 16; ++i) {
+				clrscr();
+				TextColor(i);
+				//logoLoseGame();
+				Sleep(140);
+			}
+			while (_kbhit())
+				_getch();
+			GoToXY(77, 10);		cout << "*** Press any key to continue ***";
+			TextColor(240);
+			_getch();
+			return;
+		}
+
+		if (map.checkWin() == true) {
+			if (map.checkMaxLevel() == true) {
+				clrscr();
+				//PlaySound(TEXT("Sound\\Victory.wav"), NULL, SND_FILENAME | SND_ASYNC);
+				for (int i = 0; i < 16; ++i) {
+					clrscr();
+					TextColor(i);
+					//logoWinGame();
+					Sleep(140);
+				}
+				while (_kbhit())
+					_getch();
+				GoToXY(94, 22);		cout << "*** Press any key to continue ***";
+				TextColor(240);
+				_getch();
+				return;
+			}
+
+			round++;
+			//PlaySound(TEXT("Sound\\LevelUp.wav"), NULL, SND_FILENAME | SND_ASYNC);
+
+			GoToXY(57, 2); cout << "LEVEL UP!!!";
+			Sleep(1500);
+			TextColor(250);
+			GoToXY(57, 2); cout << "            ";
+			GoToXY(142, 8); cout << round;
+			TextColor(240);
+			map.fillInsideMap();
+			map.levelUp();
+			map.resetPlayer();
+			map.initializeMap();
+			map.printMap();
+			map.initialRender();
+			map.drawPlayer();
+			if (checkMute == false)
+				//PlaySound(TEXT("Sound\\Sister'sNoise.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+
+			while (_kbhit())
+				_getch();
+		}
 	}
-}
-void Game::exitGame(thread* t) {
-		system("cls");
-		checkPauseGame = false;
-		t->join();
 }

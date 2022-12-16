@@ -2,12 +2,12 @@
 #define _Map_H_
 #include "Library.h"
 #include "People.h"
-
+#include "Lane.h"
 
 class Map {
 private:
 	People player;
-
+	vector<Lane> lanes;
 
 public:
 	Map();
@@ -21,7 +21,9 @@ public:
 	bool checkEndMap();
 
 	void initializeMap();
-
+	void initialRender();
+	
+	bool checkCollision();
 	bool checkWin();
 
 	friend class GAME;

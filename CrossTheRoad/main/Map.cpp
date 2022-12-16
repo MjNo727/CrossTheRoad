@@ -1,7 +1,7 @@
 #include "Map.h"
 #include "Game.h"
 
-Map::Map() : player()/*, level(), lanes(9)*/ {}
+Map::Map() : player()/*, level(), Lanes(9)*/ {}
 
 void Map::printMapBorder() {
 	TextColor(240);
@@ -124,7 +124,57 @@ void Map::initializeMap()
 	new (&player) People();
 	
 }
+void Map::initialRender()
+{
+	for (Lane& Lane : lanes)
+	{
+		Lane.renderTrafficLight();
+		for (Obstacle*& Obstacle : Lane.obstacles)
+			Obstacle->renderShape(Lane.y);
+	}
+}
+//void Map::generateMap(int frameTime)
+//{
+//	std::mt19937 rng(getSeed());
+//	std::uniform_int_distribution<unsigned> Row(0, lanes.size() - 1);
+//	std::uniform_int_distribution<unsigned> Pos(LEFT_BORDER, RIGHT_BORDER);
+//
+//	Obstacle;
+//	Obstacle* newObstacle;
+//	int fails = 0;
+//	while (level.currEnemy < level.maxEnemy)
+//	{
+//		int row = Row(rng);
+//
+//		if (lanes[row].enemies.empty() || !lanes[row].enemies.back()->checkAtSpawn())
+//		{
+//			int xPos = lanes[row].direction == 1 ? -10 : 120;
+//			newEnemy = level.randNewEnemy(xPos, lanes[row].direction);
+//
+//			if (newEnemy)
+//				lanes[row].enemies.push_back(newEnemy);
+//		}
+//		else
+//			if (++fails > lanes.size())
+//				break;
+//
+//	}
+//
+//	level.currEnemy -= renderMAP(frameTime);
+//}
+bool Map::checkCollision()
+{
+	for (Lane& lane : lanes)
+	{
+		for (Obstacle*& obstacle : lane.obstacles)
+		{
+			if (player.getY() == lane.y && player.checkCollision(*obstacle))
+				return true;
+		}
+	}
 
+	return false;
+}
 bool Map::checkWin() {
 	if (player.getY() == 4)
 		return true;
