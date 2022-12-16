@@ -1,5 +1,4 @@
 #pragma once
-<<<<<<< Updated upstream
 #include "Obstacle.h"
 
 //Starting x position for the Truck is -6
@@ -13,21 +12,3 @@ public:
     //void sound();
 
 };
-=======
-
-#include "Vehicle.h"
-
-class Truck : public Vehicle
-{
-private:
-
-public:
-	Truck();
-	Truck(int x);
-	int isWhat();
-	void sound();
-};
-
-
-#endif
->>>>>>> Stashed changes

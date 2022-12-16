@@ -3,11 +3,13 @@
 #include "Library.h"
 #include "People.h"
 #include "Lane.h"
+#include "Level.h"
 
 class Map {
 private:
 	People player;
 	vector<Lane> lanes;
+	Level level;
 
 public:
 	Map();
@@ -20,12 +22,18 @@ public:
 	void updatePosPlayer(char key);
 	bool checkEndMap();
 
+
+	int renderMAP(int frameTime);
+	bool checkCollision();
+
 	void initializeMap();
 	void initialRender();
-	
-	bool checkCollision();
+	void generateMap(int frameTime);
+
+	void levelUp();
+	bool checkMaxLevel();
 	bool checkWin();
 
-	friend class GAME;
+	friend class Game;
 };
 #endif

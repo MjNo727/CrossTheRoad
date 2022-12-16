@@ -1,7 +1,7 @@
 #include "Map.h"
 #include "Game.h"
 
-Map::Map() : player()/*, level(), Lanes(9)*/ {}
+Map::Map() : player(), level(), lanes(9) {}
 
 void Map::printMapBorder() {
 	TextColor(240);
@@ -117,51 +117,17 @@ void Map::updatePosPlayer(char key) {
 bool Map::checkEndMap() {
 	return player.getCheckDead();
 }
-//
-void Map::initializeMap()
+
+int Map::renderMAP(int frameTime)
 {
-	player.~People ();
-	new (&player) People();
-	
+	int outOfMap = 0;
+
+	for (Lane& lane : lanes)
+		outOfMap += lane.moveObstacle(frameTime);
+
+	return outOfMap;
 }
-void Map::initialRender()
-{
-	for (Lane& Lane : lanes)
-	{
-		Lane.renderTrafficLight();
-		for (Obstacle*& Obstacle : Lane.obstacles)
-			Obstacle->renderShape(Lane.y);
-	}
-}
-//void Map::generateMap(int frameTime)
-//{
-//	std::mt19937 rng(getSeed());
-//	std::uniform_int_distribution<unsigned> Row(0, lanes.size() - 1);
-//	std::uniform_int_distribution<unsigned> Pos(LEFT_BORDER, RIGHT_BORDER);
-//
-//	Obstacle;
-//	Obstacle* newObstacle;
-//	int fails = 0;
-//	while (level.currEnemy < level.maxEnemy)
-//	{
-//		int row = Row(rng);
-//
-//		if (lanes[row].enemies.empty() || !lanes[row].enemies.back()->checkAtSpawn())
-//		{
-//			int xPos = lanes[row].direction == 1 ? -10 : 120;
-//			newEnemy = level.randNewEnemy(xPos, lanes[row].direction);
-//
-//			if (newEnemy)
-//				lanes[row].enemies.push_back(newEnemy);
-//		}
-//		else
-//			if (++fails > lanes.size())
-//				break;
-//
-//	}
-//
-//	level.currEnemy -= renderMAP(frameTime);
-//}
+
 bool Map::checkCollision()
 {
 	for (Lane& lane : lanes)
@@ -175,6 +141,180 @@ bool Map::checkCollision()
 
 	return false;
 }
+
+void Map::initializeMap()
+{
+	player.~People();
+	new (&player) People();
+	lanes.clear();
+
+	std::mt19937 rng(getSeed());
+	std::uniform_int_distribution<unsigned> ZeroOne(0, 1);
+	std::uniform_int_distribution<unsigned> Speed(level.maxSpeed, level.minSpeed);
+	std::uniform_int_distribution<unsigned> Steps(60, 80);
+
+	switch (level.level)
+	{
+	case 1:
+		lanes = vector<Lane>(5);
+
+		for (int i = 0; i < 5; ++i)
+		{
+			lanes[i].y = i * 6 + 7;
+			lanes[i].speed = Speed(rng);
+			lanes[i].redLightRate = lanes[i].speed * Steps(rng);
+			lanes[i].greenLightRate = lanes[i].speed * Steps(rng);
+			lanes[i].direction = ZeroOne(rng) ? 1 : -1;
+			lanes[i].redLight = ZeroOne(rng);
+		}
+
+		break;
+
+	case 2:
+		lanes = vector<Lane>(6);
+
+		for (int i = 0; i < 6; ++i)
+		{
+			if (i < 3)
+				lanes[i].y = i * 3 + 7;
+			else
+				lanes[i].y = lanes[i - 1].y + 6;
+
+			lanes[i].speed = Speed(rng);
+			lanes[i].redLightRate = lanes[i].speed * Steps(rng);
+			lanes[i].greenLightRate = lanes[i].speed * Steps(rng);
+			lanes[i].direction = ZeroOne(rng) ? 1 : -1;
+			lanes[i].redLight = ZeroOne(rng);
+		}
+
+		break;
+
+	case 3:
+		lanes = vector<Lane>(7);
+
+		for (int i = 0; i < 7; ++i)
+		{
+			if (i < 5)
+				lanes[i].y = i * 3 + 7;
+			else
+				lanes[i].y = lanes[i - 1].y + 6;
+
+			lanes[i].speed = Speed(rng);
+			lanes[i].redLightRate = lanes[i].speed * Steps(rng);
+			lanes[i].greenLightRate = lanes[i].speed * Steps(rng);
+			lanes[i].direction = ZeroOne(rng) ? 1 : -1;
+			lanes[i].redLight = ZeroOne(rng);
+		}
+
+		break;
+
+	case 4:
+		lanes = vector<Lane>(8);
+
+		for (int i = 0; i < 8; ++i)
+		{
+			if (i < 7)
+				lanes[i].y = i * 3 + 7;
+			else
+				lanes[i].y = lanes[i - 1].y + 6;
+
+			lanes[i].speed = Speed(rng);
+			lanes[i].redLightRate = lanes[i].speed * Steps(rng);
+			lanes[i].greenLightRate = lanes[i].speed * Steps(rng);
+			lanes[i].direction = ZeroOne(rng) ? 1 : -1;
+			lanes[i].redLight = ZeroOne(rng);
+		}
+
+		break;
+
+	default:
+		lanes = vector<Lane>(9);
+
+		for (int i = 0; i < 9; ++i)
+		{
+			lanes[i].y = i * 3 + 7;
+			lanes[i].speed = Speed(rng);
+			lanes[i].redLightRate = lanes[i].speed * Steps(rng);
+			lanes[i].greenLightRate = lanes[i].speed * Steps(rng);
+			lanes[i].direction = ZeroOne(rng) ? 1 : -1;
+			lanes[i].redLight = ZeroOne(rng);
+		}
+
+		break;
+	}
+
+	std::uniform_int_distribution<unsigned> Row(0, lanes.size() - 1);
+	std::uniform_int_distribution<unsigned> Pos(LEFT_BORDER, RIGHT_BORDER);
+	std::uniform_int_distribution<unsigned> distance(25, 30);
+
+	int xPos[9] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+	Obstacle* newEnemy;
+	while (level.currObstacle < level.maxObstacle)
+	{
+		int row = Row(rng);
+
+		if (xPos[row] == 0)
+			xPos[row] += Pos(rng);
+		else
+			xPos[row] += distance(rng);
+
+		newEnemy = level.randNewObstacle(xPos[row], lanes[row].direction);
+
+		if (newEnemy)
+			lanes[row].obstacles.push_back(newEnemy);
+	}
+}
+void Map::initialRender()
+{
+	for (Lane& Lane : lanes)
+	{
+		Lane.renderTrafficLight();
+		for (Obstacle*& Obstacle : Lane.obstacles)
+			Obstacle->renderShape(Lane.y);
+	}
+}
+
+void Map::generateMap(int frameTime)
+{
+	std::mt19937 rng(getSeed());
+	std::uniform_int_distribution<unsigned> Row(0, lanes.size() - 1);
+	std::uniform_int_distribution<unsigned> Pos(LEFT_BORDER, RIGHT_BORDER);
+
+
+	Obstacle* newEnemy;
+	int fails = 0;
+	while (level.currObstacle < level.maxObstacle)
+	{
+		int row = Row(rng);
+
+		if (lanes[row].obstacles.empty() || !lanes[row].obstacles.back()->checkSpawn())
+		{
+			int xPos = lanes[row].direction == 1 ? -10 : 120;
+			newEnemy = level.randNewObstacle(xPos, lanes[row].direction);
+
+			if (newEnemy)
+				lanes[row].obstacles.push_back(newEnemy);
+		}
+		else
+			if (++fails > lanes.size())
+				break;
+
+	}
+
+	level.currObstacle -= renderMAP(frameTime);
+}
+
+void Map::levelUp() {
+	level.nextLevel();
+}
+
+bool Map::checkMaxLevel() {
+	if (level.getLevel() == 5)
+		return true;
+	return false;
+}
+
 bool Map::checkWin() {
 	if (player.getY() == 4)
 		return true;
