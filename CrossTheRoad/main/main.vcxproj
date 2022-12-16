@@ -139,7 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
     <ClInclude Include="Car.h" />
+=======
+    <ClInclude Include="Animal.h" />
+    <ClInclude Include="Car.h" />
+    <ClInclude Include="Enemy.h" />
+>>>>>>> Stashed changes
     <ClInclude Include="Game.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Lane.h" />
@@ -148,9 +154,14 @@
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Owl.h" />
     <ClInclude Include="People.h" />
+<<<<<<< Updated upstream
     <ClInclude Include="Rat.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="Truck.h" />
+=======
+    <ClInclude Include="Truck.h" />
+    <ClInclude Include="Vehicle.h" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Car.cpp" />
