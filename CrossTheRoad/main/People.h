@@ -41,9 +41,8 @@ public:
 
 	bool checkCollision(Obstacle& obstacle);
 
-	friend class MAP;
+	friend class Map;
 };
-
 
 #endif
 

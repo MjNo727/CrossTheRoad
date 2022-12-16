@@ -20,3 +20,7 @@ Truck::Truck(int x) : Obstacle(x, 1) {
 int Truck::isForm() {
     return 5;
 }
+
+void Truck::sound() {
+    PlaySound(TEXT("Sound\\Car.wav"), NULL, SND_FILENAME | SND_ASYNC);
+}

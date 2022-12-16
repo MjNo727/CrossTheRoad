@@ -20,3 +20,7 @@ Car::Car(int x) : Obstacle(x, 1)
 int Car::isForm() {
     return 2;
 }
+
+void Car::sound() {
+    PlaySound(TEXT("Sound\\Car.wav"), NULL, SND_FILENAME | SND_ASYNC);
+}

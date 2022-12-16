@@ -19,3 +19,7 @@ Owl::Owl(int x) : Obstacle(x, 0) {
 int Owl::isForm() {
     return 3;
 }
+
+void Owl::sound() {
+    PlaySound(TEXT("Sound\\Owl.wav"), NULL, SND_FILENAME | SND_ASYNC);
+}

@@ -8,6 +8,6 @@ public:
     Snake();
     Snake(int x);
     int isForm();
-    //void sound();
+    void sound();
 
 };

@@ -9,6 +9,6 @@ public:
     Car();
     Car(int x);
     int isForm();
-    //void sound();
+    void sound();
 
 };

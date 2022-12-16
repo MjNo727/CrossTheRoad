@@ -564,7 +564,7 @@ void Game::newGame() {
 		if (map.checkWin() == true) {
 			if (map.checkMaxLevel() == true) {
 				clrscr();
-				//PlaySound(TEXT("Sound\\Victory.wav"), NULL, SND_FILENAME | SND_ASYNC);
+				PlaySound(TEXT("Sound\\Victory.wav"), NULL, SND_FILENAME | SND_ASYNC);
 				for (int i = 0; i < 16; ++i) {
 					clrscr();
 					TextColor(i);

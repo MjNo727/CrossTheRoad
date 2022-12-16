@@ -9,6 +9,6 @@ public:
     Owl();
     Owl(int x);
     int isForm();
-    //void sound();
+    void sound();
 
 };
