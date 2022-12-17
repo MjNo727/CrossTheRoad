@@ -2,16 +2,16 @@
 
 
 Snake::Snake() {
-    shape.push_back(" SnakeSnakeSna ");
-    shape.push_back(" SnakeSnakeSna ");
-    shape.push_back(" SnakeSnakeSna ");
+    shape.push_back("    __    --_- ");
+    shape.push_back(" >~8_ |__/ /   ");
+    shape.push_back("    |_____/    ");
 
 }
 
 Snake::Snake(int x) : Obstacle(x, 0) {
-    shape.push_back(" SnakeSnakeSna ");
-    shape.push_back(" SnakeSnakeSna ");
-    shape.push_back(" SnakeSnakeSna ");
+    shape.push_back("    __    --_- ");
+    shape.push_back(" >~8_ |__/ /   ");
+    shape.push_back("    |_____/    ");
 }
 
 

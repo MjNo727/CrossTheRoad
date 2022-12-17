@@ -2,16 +2,16 @@
 
 
 Owl::Owl() {
-    shape.push_back(" OwlOwlOwlOwlOwl ");
-    shape.push_back(" OwlOwlOwlOwlOwl ");
-    shape.push_back(" OwlOwlOwlOwlOwl ");
+    shape.push_back("    .___,    ");
+    shape.push_back(" ___('v')___ ");
+    shape.push_back(" `\"-\\,_,/-\"' ");
 
 }
 
 Owl::Owl(int x) : Obstacle(x, 0) {
-    shape.push_back(" OwlOwlOwlOwlOwl ");
-    shape.push_back(" OwlOwlOwlOwlOwl ");
-    shape.push_back(" OwlOwlOwlOwlOwl ");
+    shape.push_back("    .___,    ");
+    shape.push_back(" ___('v')___ ");
+    shape.push_back(" `\"-\\,_,/-\"' ");
 }
 
 

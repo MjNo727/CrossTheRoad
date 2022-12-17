@@ -2,18 +2,16 @@
 
 Car::Car()
 {
-    shape.push_back(" sssssssssssss ");
-    shape.push_back(" sssssssssssss ");
-
-    shape.push_back(" sssssssssssss ");
+    shape.push_back("      _   ");
+    shape.push_back(" _-_-_=\\-_ ");
+    shape.push_back(" (o)=='(o) ");
 }
 
 Car::Car(int x) : Obstacle(x, 1)
 {
-    shape.push_back(" sssssssssssss ");
-    shape.push_back(" sssssssssssss ");
-
-    shape.push_back(" sssssssssssss ");
+    shape.push_back("      _   ");
+    shape.push_back(" _-_-_=\\-_ ");
+    shape.push_back(" (o)=='(o) ");
 }
 
 

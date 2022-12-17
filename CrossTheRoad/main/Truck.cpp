@@ -2,16 +2,16 @@
 
 
 Truck::Truck() {
-    shape.push_back(" TruckTruckTru ");
-    shape.push_back(" TruckTruckTru ");
-    shape.push_back(" TruckTruckTru ");
+    shape.push_back("  ___//_]\\___  ");
+    shape.push_back(" |o _ | -|_o )  ");
+    shape.push_back(" `(o)---(o)--'  ");
 
 }
 
 Truck::Truck(int x) : Obstacle(x, 1) {
-    shape.push_back(" TruckTruckTru ");
-    shape.push_back(" TruckTruckTru ");
-    shape.push_back(" TruckTruckTru ");
+    shape.push_back("  ___//_]\\___  ");
+    shape.push_back(" |o _ | -|_o )  ");
+    shape.push_back(" `(o)---(o)--'  ");
 }
 
 

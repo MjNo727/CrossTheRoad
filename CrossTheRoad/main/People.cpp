@@ -26,15 +26,15 @@ void People::createBlank() {
 void People::createPeople() {
 	createBlank();
 	// Head
-	people.push_back(" abc ");
+	people.push_back(" [o] ");
 
 
 	// Body
-	people.push_back(" bcd ");
+	people.push_back(" -|- ");
 
 
 	// Legs
-	people.push_back(" efg ");
+	people.push_back(" / \\ ");
 
 }
 
