@@ -100,7 +100,7 @@ bool People::checkCollision(Obstacle& obstacle) {
 
 	if ((obstacle.mX + obstacle.form <= x && x <= obstacle.mX + obstacle.form + length - 2) || (obstacle.mX + obstacle.form <= x + 4 && x + 4 <= obstacle.mX + obstacle.form + length - 2))
 	{
-		//obstacle.sound();
+		obstacle.sound();
 		return true;
 	}
 
