@@ -49,7 +49,7 @@ public:
 	
 	void ResizeConsole(int width, int height);
 	void FixConsoleWindow();
-	void logoCrossyRoad();
+	void CRLogo();
 	void fillMenu();
 
 	void menu();
@@ -58,6 +58,8 @@ public:
 	void newGame();
 	/*void exitGame(thread* t);*/
 	void settings();
+	void WinLogo();
+	void loseLogo();
 };
 
 void GoToXY(int x, int y);
@@ -65,5 +67,6 @@ void NoCursorType();
 void CursorType();
 void TextColor(int color);
 void clrscr(); 
+
 std::mt19937::result_type getSeed();
 #endif

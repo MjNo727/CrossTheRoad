@@ -77,7 +77,7 @@ std::mt19937::result_type getSeed()
 	return seed;
 }
 
-void Game::logoCrossyRoad() {
+void Game::CRLogo() {
 	NoCursorType();
 	TextColor(240);
 	int x = 45;
@@ -301,7 +301,7 @@ void Game::menu() {
 	
 	while (true) {
 		clrscr();
-		logoCrossyRoad();
+		CRLogo();
 		if (checkMute == false)
 			PlaySound(TEXT("Sound\\Theme.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 		NoCursorType();
@@ -395,7 +395,7 @@ void Game::menu() {
 		//while (true) {
 		//	if (checkLoadGame == true) {
 		//		clrscr();
-		//		logoCrossyRoad();
+		//		CRLogo();
 		//		loadingBar();
 		//		TextColor(240);
 		//		newGame();
@@ -406,6 +406,42 @@ void Game::menu() {
 	}
 }
 
+
+void Game::loseLogo() {
+	TextColor(252);
+
+	NoCursorType();
+	int x = 53;
+	int y = 11;
+	int z = 2;
+
+	GoToXY(x, z);		cout << " __   __  _______  __   __    ___      _______  _______  _______    __   __   __ " << endl;
+	GoToXY(x, z + 1);	cout << "|  | |  ||       ||  | |  |  |   |    |       ||       ||       |  |  | |  | |  |" << endl;
+	GoToXY(x, z + 2);	cout << "|  |_|  ||   _   ||  | |  |  |   |    |   _   ||  _____||_     _|  |  | |  | |  |" << endl;
+	GoToXY(x, z + 3);	cout << "|       ||  | |  ||  |_|  |  |   |    |  | |  || |_____   |   |    |  | |  | |  |" << endl;
+	GoToXY(x, z + 4);	cout << "|_     _||  |_|  ||       |  |   |___ |  |_|  ||_____  |  |   |    |__| |__| |__|" << endl;
+	GoToXY(x, z + 5);	cout << "  |   |  |       ||       |  |       ||       | _____| |  |   |     __   __   __ " << endl;
+	GoToXY(x, z + 6);	cout << "  |___|  |_______||_______|  |_______||_______||_______|  |___|    |__| |__| |__|" << endl;
+
+}
+
+void Game::WinLogo() {
+	TextColor(242);
+	NoCursorType();
+	int x = 50;
+	int y = 8;
+
+	GoToXY(x + 3, y + 6);    cout << " __   __  _______  __   __    _     _  _______   __    _    __   __   __ " << endl;
+	GoToXY(x + 3, y + 7);	 cout << "|  | |  ||       ||  | |  |  | | _ | ||       | |  |  | |  |  | |  | |  |" << endl;
+	GoToXY(x + 3, y + 8);	 cout << "|  |_|  ||   _   ||  | |  |  | || || ||   _   | |   |_| |  |  | |  | |  |" << endl;
+	GoToXY(x + 3, y + 9);    cout << "|       ||  | |  ||  |_|  |  |       ||  | |  | |       |  |  | |  | |  |" << endl;
+	GoToXY(x + 3, y + 10);	 cout << "|_     _||  |_|  ||       |  |       ||  |_|  | |  _    |  |__| |__| |__|" << endl;
+	GoToXY(x + 3, y + 11);	 cout << "  |   |  |       ||       |  |   _   ||       | | | |   |   __   __   __ " << endl;
+	GoToXY(x + 3, y + 12);	 cout << "  |___|  |_______||_______|  |__| |__||_______| |_|  |__|  |__| |__| |__|" << endl;
+	
+	
+
+}
 
 void Game::newGame() {
 	NoCursorType();
@@ -570,7 +606,7 @@ void Game::newGame() {
 			for (int i = 0; i < 16; ++i) {
 				clrscr();
 				TextColor(i);
-				//logoLoseGame();
+				loseLogo();
 				Sleep(140);
 			}
 			while (_kbhit())
@@ -588,12 +624,12 @@ void Game::newGame() {
 				for (int i = 0; i < 16; ++i) {
 					clrscr();
 					TextColor(i);
-					//logoWinGame();
+					WinLogo();
 					Sleep(140);
 				}
 				while (_kbhit())
 					_getch();
-				GoToXY(94, 22);		cout << "*** Press any key to continue ***";
+				GoToXY(77, 22);		cout << "*** Press any key to continue ***";
 				TextColor(240);
 				_getch();
 				return;
@@ -601,7 +637,7 @@ void Game::newGame() {
 
 			round++;
 			PlaySound(TEXT("Sound\\LevelUp.wav"), NULL, SND_FILENAME | SND_ASYNC);
-
+			TextColor(250);
 			GoToXY(57, 2); cout << "LEVEL UP!!!";
 			Sleep(1500);
 			TextColor(250);
