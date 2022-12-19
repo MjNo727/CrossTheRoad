@@ -16,8 +16,6 @@ People::People(int x, int y) {
 }
 
 
-
-
 void People::createBlank() {
 	for (int i = 0; i < 3; ++i) {
 		blank.push_back("     ");
@@ -28,10 +26,8 @@ void People::createPeople() {
 	// Head
 	people.push_back(" [o] ");
 
-
 	// Body
 	people.push_back(" -|- ");
-
 
 	// Legs
 	people.push_back(" / \\ ");
@@ -98,13 +94,17 @@ bool People::checkCollision(Obstacle& obstacle) {
 
 	int length = obstacle.shape[0].length();
 
-	if ((obstacle.mX + obstacle.form <= x && x <= obstacle.mX + obstacle.form + length - 2) || (obstacle.mX + obstacle.form <= x + 4 && x + 4 <= obstacle.mX + obstacle.form + length - 2))
+	if ((obstacle.mX + obstacle.form <= x && x <= obstacle.mX + obstacle.form + length - 2) 
+		
+		|| (obstacle.mX + obstacle.form <= x + 4 && x + 4 <= obstacle.mX + obstacle.form + length - 2))
+		
 	{
 		obstacle.sound();
 		return true;
 	}
 
-
-
 	return false;
 }
+
+// ben trai obstacle + form di chuyen <= ben trai x, va ben trai x be hon ben phai obstacle
+		//ben trai obstacle <= ben phai x nhan vat va ben phai nhan vat be hon ben phai obstacl

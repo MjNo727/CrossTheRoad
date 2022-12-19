@@ -4,7 +4,7 @@ class Obstacle {
 protected:
 	vector<string>shape;
 	int mX;
-	bool form; // Animal = 1, Vehicle = 0
+	bool form; // Animal = 0 di tu phai qua trai, Vehicle = 1 di tu trai qua phai
 public:
 	Obstacle();
 	Obstacle(int x, bool form);

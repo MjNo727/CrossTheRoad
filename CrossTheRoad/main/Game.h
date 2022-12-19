@@ -51,22 +51,23 @@ public:
 	void FixConsoleWindow();
 	void CRLogo();
 	void fillMenu();
-
 	void menu();
-	void box(int x, int y);
 
 	void newGame();
-	/*void exitGame(thread* t);*/
 	void settings();
 	void WinLogo();
 	void loseLogo();
+	void loadGame();
+	void saveGame();
+	void logoLoadGame();
+	void logoSaveGame();
 };
 
 void GoToXY(int x, int y);
-void NoCursorType();
-void CursorType();
+void NoCursor();
+void Cursor();
 void TextColor(int color);
 void clrscr(); 
-
+vector<string> showListFiles();
 std::mt19937::result_type getSeed();
 #endif

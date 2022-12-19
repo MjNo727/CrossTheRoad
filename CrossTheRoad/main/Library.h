@@ -11,6 +11,7 @@
 #include <fstream>
 #include <thread>
 #include <mmsystem.h>
+#include <string>
 
 
 #pragma comment (lib, "winmm.lib")

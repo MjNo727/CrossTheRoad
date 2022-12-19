@@ -33,6 +33,8 @@ public:
 	void levelUp();
 	bool checkMaxLevel();
 	bool checkWin();
+	void saveGame(string name, bool mode);
+	bool loadGame(string name, bool& mode);
 
 	friend class Game;
 };

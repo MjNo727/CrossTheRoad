@@ -105,7 +105,7 @@ Obstacle* Level::randNewObstacle(int x, short direction) {
         std::mt19937 rng(getSeed());
         std::uniform_int_distribution<unsigned> Vehicle(0, 2);
         std::uniform_int_distribution<unsigned> Animal(0, 3);
-
+        // Animal = 0, Vehicle = 1
         if (direction == 1) {
             if (Vehicle(rng))
                 Obstacle = new Car(x);

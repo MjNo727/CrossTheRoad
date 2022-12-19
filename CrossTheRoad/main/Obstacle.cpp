@@ -23,6 +23,7 @@ void Obstacle::renderShape(int y)
 		GoToXY(pos, y + i);
 		for (int j = leftMost; j < rightMost; ++j)
 		{
+
 			cout << shape[i][j];
 		}
 	}
