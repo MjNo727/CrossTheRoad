@@ -1187,12 +1187,12 @@ void Game::saveGame() {
 
 
 	cout << "Enter your file here: ";
-	thread t(checkReturn);
+	
 	
 	Cursor();
 	string file;
 	cin >> file;
-	t.join();
+
 	NoCursor();
 	Sleep(50);
 
