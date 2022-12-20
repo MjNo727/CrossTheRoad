@@ -418,7 +418,6 @@ void Game::loadingBar() {
 	}
 
 	y = 20;
-
 	GoToXY(90, y - 1);	cout << "LOADING...";
 	GoToXY(x - 1, y);
 	for (int i = 0; i < 70; ++i)
@@ -640,7 +639,7 @@ void Game::menu() {
 				TextColor(15);
 				GoToXY(x + 6, y + 1); cout << " NEW GAME ";
 				if (choice == KEY_ENTER) {
-					//loadingBar();
+					loadingBar();
 					TextColor(240);
 					newGame();
 					break;
