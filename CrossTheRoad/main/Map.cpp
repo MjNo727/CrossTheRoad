@@ -90,15 +90,13 @@ int Map::drawFromPosition(int x, int y, vector<string>shape, int w, int h) {
 }
 
 void Map::drawPlayer() {
-	int live = drawFromPosition(player.getX(), player.getY(),
-		player.getPeople(), player.getWidth(), player.getHeight());
+	int live = drawFromPosition(player.getX(), player.getY(), player.getPeople(), player.getWidth(), player.getHeight());
 	if (live == -1)
 		player.setCheckDead();
 }
 
 void Map::resetPlayer() {
-	drawFromPosition(player.getX(), player.getY(), player.getBlank(), 
-		player.getWidth(), player.getHeight());
+	drawFromPosition(player.getX(), player.getY(), player.getBlank(), player.getWidth(), player.getHeight());
 }
 
 void Map::updatePosPlayer(char key) {
@@ -116,6 +114,9 @@ void Map::updatePosPlayer(char key) {
 		return;
 }
 
+bool Map::checkEndMap() {
+	return player.getCheckDead();
+}
 
 int Map::renderMAP(int frameTime)
 {
@@ -127,35 +128,17 @@ int Map::renderMAP(int frameTime)
 	return outOfMap;
 }
 
-bool Map::checkEndMap() {
-	return player.getCheckDead();
-}
-
 bool Map::checkCollision()
 {
 	for (Lane& lane : lanes)
 	{
 		for (Obstacle*& obstacle : lane.obstacles)
 		{
-			if (player.getY() == lane.y 
-				&& player.checkCollision(*obstacle))
+			if (player.getY() == lane.y && player.checkCollision(*obstacle))
 				return true;
 		}
 	}
-	return false;
-}
 
-void Map::levelUp() {
-	level.nextLevel();
-}
-bool Map::checkMaxLevel() {
-	if (level.getLevel() == 5)
-		return true;
-	return false;
-}
-bool Map::checkWin() {
-	if (player.getY() == 4)
-		return true;
 	return false;
 }
 
@@ -256,8 +239,10 @@ void Map::initializeMap()
 			lanes[i].direction = ZeroOne(rng) ? 1 : -1;
 			lanes[i].redLight = ZeroOne(rng);
 		}
+
 		break;
 	}
+
 	std::uniform_int_distribution<unsigned> Row(0, lanes.size() - 1);
 	std::uniform_int_distribution<unsigned> Pos(LEFT_BORDER, RIGHT_BORDER);
 	std::uniform_int_distribution<unsigned> distance(25, 30);
@@ -296,8 +281,8 @@ void Map::generateMap(int frameTime)
 	std::uniform_int_distribution<unsigned> Row(0, lanes.size() - 1);
 	std::uniform_int_distribution<unsigned> Pos(LEFT_BORDER, RIGHT_BORDER);
 
-	Obstacle* newEnemy;
 
+	Obstacle* newEnemy;
 	int fails = 0;
 	while (level.currObstacle < level.maxObstacle)
 	{
@@ -314,11 +299,27 @@ void Map::generateMap(int frameTime)
 		else
 			if (++fails > lanes.size())
 				break;
+
 	}
+
 	level.currObstacle -= renderMAP(frameTime);
 }
 
+void Map::levelUp() {
+	level.nextLevel();
+}
 
+bool Map::checkMaxLevel() {
+	if (level.getLevel() == 5)
+		return true;
+	return false;
+}
+
+bool Map::checkWin() {
+	if (player.getY() == 4)
+		return true;
+	return false;
+}
 bool Map::loadGame(string name, bool& mode) {
 	ifstream f;
 	f.open(name);
@@ -357,11 +358,11 @@ bool Map::loadGame(string name, bool& mode) {
 
 			Obstacle* temp = NULL;
 			if (type == 1)
-				temp = new Rat(x);
+				temp = new Owl(x);
 			if (type == 2)
 				temp = new Car(x);
 			if (type == 3)
-				temp = new Owl(x);
+				temp = new Rat(x);
 			if (type == 4)
 				temp = new Snake(x);
 			if (type == 5)
@@ -379,18 +380,18 @@ void Map::saveGame(string file, bool mode) {
 	string filename = "Data/";
 	filename += file + ".bin";
 
+	fstream f2("Data\\listFiles.txt", ios::app);
+	f2 << file;
+	f2 << endl;
+	f2.close();
+
+
+
 	ofstream f(filename, ios::out | ios::binary);
 	if (!f) {
 		cout << "Cannot open file!" << endl;
 		return;
 	}
-	//fstream f;
-	//f.open(filename, ios::binary);
-	
-	//if (!f.is_open())
-	//	cout << "!!!!!!!!!!!" << endl;
-	//	Sleep(10000);
-	//	return;
 
 	//player
 	f.write((char*)&mode, sizeof(mode));
@@ -413,6 +414,7 @@ void Map::saveGame(string file, bool mode) {
 		f.write((char*)&lanes[i].y, sizeof(lanes[i].y));
 
 		for (int j = 0; j < lanes[i].obstacles.size(); j++) {
+			// bat = 1, car = 2, dog = 3, shark = 4, truck = 5
 			temp = lanes[i].obstacles[j]->isForm();
 			f.write((char*)&temp, sizeof(temp));
 			f.write((char*)&lanes[i].obstacles[j]->mX, sizeof(lanes[i].obstacles[j]->mX));
@@ -420,9 +422,4 @@ void Map::saveGame(string file, bool mode) {
 	}
 	f.close();
 
-
-	fstream f2("Data\\listFiles.txt", ios::app);
-	f2 << file;
-	f2 << endl;
-	f2.close();
 }

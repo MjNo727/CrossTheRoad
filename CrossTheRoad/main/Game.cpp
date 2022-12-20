@@ -1,6 +1,4 @@
 #include "Game.h"
-
-
 void GoToXY(int x, int y) {
 	static HANDLE h = NULL;
 	if (!h)
@@ -9,26 +7,28 @@ void GoToXY(int x, int y) {
 	SetConsoleCursorPosition(h, c);
 }
 
-void NoCursor() {
+void NoCursorType() {
 	CONSOLE_CURSOR_INFO Info;
 	Info.bVisible = FALSE;
 	Info.dwSize = 20;
-	SetConsoleCursorInfo
-	(GetStdHandle(STD_OUTPUT_HANDLE), &Info);
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &Info);
 }
 
-void Cursor() {
+void UnNoCursorType() {
 	CONSOLE_CURSOR_INFO Info;
 	Info.bVisible = TRUE;
 	Info.dwSize = 20;
-	SetConsoleCursorInfo
-	(GetStdHandle(STD_OUTPUT_HANDLE), &Info);
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &Info);
 }
 
 void TextColor(int color) {
 	HANDLE hConsoleColor;
-	SetConsoleTextAttribute
-	(GetStdHandle(STD_OUTPUT_HANDLE), color);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
+void TextColor(WORD color) {
+	HANDLE hConsoleColor;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
 
@@ -81,33 +81,63 @@ std::mt19937::result_type getSeed()
 	return seed;
 }
 
-void Game::CRLogo() {
-	NoCursor();
+void Game::logoCrossyRoad() {
+	NoCursorType();
 	TextColor(240);
 	int x = 45;
 	int y = 4;
-	GoToXY(x - 15, y);		cout << " _______  _______   _______  _______  _______         _______  __   __  _______          _______   _______  _______  ______  " << endl;
-	GoToXY(x - 15, y + 1);	cout << "|      _||    _  | |       ||       ||       |       |_     _||  | |  ||  _____|        |    _  | |       ||   _   ||      | " << endl;
-	GoToXY(x - 15, y + 2);	cout << "|     |  |   | | | |   _   ||  _____||  _____|         |   |  |  |_|  ||  |____         |   | | | |   _   ||  | |  ||  __   |" << endl;
-	GoToXY(x - 15, y + 3);	cout << "|     |  |   |_| | |  | |  || |_____ | |_____          |   |  |   _   ||  _____|        |   |_| | |  | |  ||  |_|  || |  |  |" << endl;
-	GoToXY(x - 15, y + 4);	cout << "|     |  |    __  ||  |_|  ||_____  ||_____  |         |   |  |  | |  ||  |____         |    __  ||  |_|  ||   _   || |__|  |" << endl;
-	GoToXY(x - 15, y + 5);	cout << "|     |  |   |  | ||       | _____| | _____| |         |___|  |__| |__||_______|        |   |  | ||       ||  | |  ||       |" << endl;
-	GoToXY(x - 15, y + 6);	cout << "|_______||___|  |_||_______||_______||_______|                                          |___|  |_||_______||__| |__||______| " << endl;
-	
-	GoToXY(x - 20, y+13);	cout << "                   _..-------++._" << endl;
+	GoToXY(x - 15, y);		cout << "         ____                                     ______  __                  ____                         __     " << endl;
+	GoToXY(x - 15, y + 1);	cout << "        /\\  _`\\                                  /\\__  _\\/\\ \\                /\\  _`\\                      /\\ \\    " << endl;
+	GoToXY(x - 15, y + 2);	cout << "        \\ \\ \\/\\_\\  _ __   ___     ____    ____   \\/_/\\ \\/\\ \\ \\___      __    \\ \\ \\L\\ \\    ___      __     \\_\\ \\   " << endl;
+	GoToXY(x - 15, y + 3);	cout << "         \\ \\ \\/_/_/\\`'__\\/ __`\\  /',__\\  /',__\\     \\ \\ \\ \\ \\  _ `\\  /'__`\\   \\ \\ ,  /   / __`\\  /'__`\\   /'_` \\  " << endl;
+	GoToXY(x - 15, y + 4);	cout << "          \\ \\ \\L\\ \\ \\ \\//\\ \\L\\ \\/\\__, `\\/\\__, `\\     \\ \\ \\ \\ \\ \\ \\ \\/\\  __/    \\ \\ \\\\ \\ /\\ \\L\\ \\/\\ \\L\\.\\_/\\ \\L\\ \\ " << endl;
+	GoToXY(x - 15, y + 5);	cout << "           \\ \\____/\\ \\_\\\\ \\____/\\/\\____/\\/\\____/      \\ \\_\\ \\ \\_\\ \\_\\ \\____\\    \\ \\_\\ \\_\\ \\____/\\ \\__/.\\_\\ \\___,_\\" << endl;
+	GoToXY(x - 15, y + 6);	cout << "            \\/___/  \\/_/ \\/___/  \\/___/  \\/___/        \\/_/  \\/_/\\/_/\\/____/     \\/_/\\/ /\\/___/  \\/__/\\/_/\\/__,_ /" << endl;
+
+	GoToXY(x - 45, y + 11);
+	for (int i = 0; i < 172; ++i)
+		cout << DOWN_BLACK_PIECE;
+	GoToXY(x - 45, y + 24);
+	for (int i = 0; i < 172; ++i)
+		cout << DOWN_BLACK_PIECE;
+
+	GoToXY(x - 45, y + 17);
+	for (int i = 0; i < 140; i++)
+	{
+		if ((i % 5) != 0) cout << UP_BLACK_PIECE;
+		else cout << "  ";
+	}
+	GoToXY(x - 45, y + 16);
+	for (int i = 0; i < 140; i++)
+	{
+		if ((i % 5) != 0) cout << DOWN_BLACK_PIECE;
+		else cout << "  ";
+	}
+	GoToXY(x + 40, y + 17);
+	for (int i = 0; i < 20; i++)
+	{
+		cout << " ";
+	}
+	GoToXY(x + 40, y + 16);
+	for (int i = 0; i < 20; i++)
+	{
+		cout << " ";
+	}
+
+	GoToXY(x - 20, y + 13);	cout << "                   _..-------++._" << endl;
 	GoToXY(x - 20, y + 14);	cout << "               _.-'/ |      _||  \\\"--._" << endl;
 	GoToXY(x - 20, y + 15);	cout << "         __.--'`._/_\\j_____/_||___\\    `----." << endl;
-	GoToXY(x - 20, y + 16);	cout << "    _.--'_____    |           \\     _____    /"<< endl;
-	GoToXY(x - 20, y + 17);	cout << "  _j    /,---.\   |         =o |   /,---.\\   |_" << endl;
+	GoToXY(x - 20, y + 16);	cout << "    _.--'_____    |          \\     _____    /" << endl;
+	GoToXY(x - 20, y + 17);	cout << "   _j    /,---.\   |        =o |   /,---.\\   |_" << endl;
 	GoToXY(x - 20, y + 18);	cout << " [__]==// .-. \\\\==`===========/==// .-. \\\\=[__]" << endl;
 	GoToXY(x - 20, y + 19);	cout << "   `-._|\\ `-' /|___\\_________/___|\\ `-' /|_.'    ";
 	GoToXY(x - 20, y + 20);	cout << "         `---'                     `---'";
 
-	GoToXY(x+70, y + 13);	cout << "                   _..-------++._" << endl;
+	GoToXY(x + 70, y + 13);	cout << "                   _..-------++._" << endl;
 	GoToXY(x + 70, y + 14);	cout << "               _.-'/ |      _||  \\\"--._" << endl;
 	GoToXY(x + 70, y + 15);	cout << "         __.--'`._/_\\j_____/_||___\\    `----." << endl;
-	GoToXY(x + 70, y + 16);	cout << "    _.--'_____    |           \\     _____    /" << endl;
-	GoToXY(x + 70, y + 17);	cout << "  _j    /,---.\   |         =o |   /,---.\\   |_" << endl;
+	GoToXY(x + 70, y + 16);	cout << "    _.--'_____    |          \\     _____    /" << endl;
+	GoToXY(x + 70, y + 17);	cout << "   _j    /,---.\   |        =o |   /,---.\\   |_" << endl;
 	GoToXY(x + 70, y + 18);	cout << " [__]==// .-. \\\\==`===========/==// .-. \\\\=[__]" << endl;
 	GoToXY(x + 70, y + 19);	cout << "   `-._|\\ `-' /|___\\_________/___|\\ `-' /|_.'    ";
 	GoToXY(x + 70, y + 20);	cout << "         `---'                     `---'";
@@ -155,6 +185,187 @@ void Game::CRLogo() {
 	}
 }
 
+void Game::logoLoadGame() {
+	NoCursorType();
+	TextColor(240);
+	clrscr();
+	int x = 45;
+	int y = 4;
+
+	GoToXY(x - 2, y);		cout << " ___      _______  _______  ______   ___   __    _  _______    _______  _______  __   __  _______ " << endl;
+	GoToXY(x - 2, y + 1);	cout << "|   |    |       ||   _   ||      | |   | |  |  | ||       |  |       ||   _   ||  |_|  ||       |" << endl;
+	GoToXY(x - 2, y + 2);	cout << "|   |    |   _   ||  |_|  ||  _    ||   | |   |_| ||    ___|  |    ___||  |_|  ||       ||    ___|" << endl;
+	GoToXY(x - 2, y + 3);	cout << "|   |    |  | |  ||       || | |   ||   | |       ||   | __   |   | __ |       ||       ||   |___ " << endl;
+	GoToXY(x - 2, y + 4);	cout << "|   |___ |  |_|  ||       || |_|   ||   | |  _    ||   ||  |  |   ||  ||       ||       ||    ___|" << endl;
+	GoToXY(x - 2, y + 5);	cout << "|       ||       ||   _   ||       ||   | | | |   ||   |_| |  |   |_| ||   _   || ||_|| ||   |___ " << endl;
+	GoToXY(x - 2, y + 6);	cout << "|_______||_______||__| |__||______| |___| |_|  |__||_______|  |_______||__| |__||_|   |_||_______|" << endl;
+
+	GoToXY(x - 8, y - 2);
+	for (int i = 0; i < 110; ++i)
+		cout << DOWN_BLACK_PIECE;
+	GoToXY(x - 5, y - 1);
+	for (int i = 0; i < 105; ++i)
+		cout << HORIZONTAL_PALE_PIECE;
+	GoToXY(x - 5, y + 8);
+	for (int i = 0; i < 105; ++i)
+		cout << HORIZONTAL_PALE_PIECE;
+	GoToXY(x - 8, 13);
+	for (int i = 0; i < 110; ++i)
+		cout << UP_BLACK_PIECE;
+
+	GoToXY(x - 6, y - 1);
+	cout << UP_LEFT_CORNER_PALE_PIECE;
+	GoToXY(x - 6, y + 8);
+	cout << DOWN_LEFT_CORNER_PALE_PIECE;
+
+	GoToXY(x + 99, y - 1);
+	cout << UP_RIGHT_CORNER_PALE_PIECE;
+	GoToXY(x + 99, y + 8);
+	cout << DOWN_RIGHT_CORNER_PALE_PIECE;
+
+	for (int i = 4; i < 12; ++i) {
+		GoToXY(x - 6, i);
+		cout << VERTICAL_PALE_PIECE;
+	}
+	for (int i = 4; i < 12; ++i) {
+		GoToXY(x + 99, i);
+		cout << VERTICAL_PALE_PIECE;
+	}
+	for (int i = 3; i < 13; ++i) {
+		GoToXY(x - 8, i);
+		cout << VERTICAL_BLACK_PIECE;
+	}
+	for (int i = 3; i < 13; ++i) {
+		GoToXY(x + 101, i);
+		cout << VERTICAL_BLACK_PIECE;
+	}
+}
+
+void Game::logoSaveGame() {
+	NoCursorType();
+	TextColor(240);
+	clrscr();
+	int x = 59;
+	int y = 4;
+
+	GoToXY(x - 2, y);		cout << " _______  _______  __   __  _______    _______  _______  __   __  _______ " << endl;
+	GoToXY(x - 2, y + 1);	cout << "|       ||   _   ||  | |  ||       |  |       ||   _   ||  |_|  ||       |" << endl;
+	GoToXY(x - 2, y + 2);	cout << "|  _____||  |_|  ||  |_|  ||    ___|  |    ___||  |_|  ||       ||    ___|" << endl;
+	GoToXY(x - 2, y + 3);	cout << "| |_____ |       ||       ||   |___   |   | __ |       ||       ||   |___ " << endl;
+	GoToXY(x - 2, y + 4);	cout << "|_____  ||       ||       ||    ___|  |   ||  ||       ||       ||    ___|" << endl;
+	GoToXY(x - 2, y + 5);	cout << " _____| ||   _   | |     | |   |___   |   |_| ||   _   || ||_|| ||   |___ " << endl;
+	GoToXY(x - 2, y + 6);	cout << "|_______||__| |__|  |___|  |_______|  |_______||__| |__||_|   |_||_______|" << endl;
+
+	GoToXY(x - 8, y - 2);
+	for (int i = 0; i < 86; ++i)
+		cout << DOWN_BLACK_PIECE;
+	GoToXY(x - 5, y - 1);
+	for (int i = 0; i < 81; ++i)
+		cout << HORIZONTAL_PALE_PIECE;
+	GoToXY(x - 5, y + 8);
+	for (int i = 0; i < 81; ++i)
+		cout << HORIZONTAL_PALE_PIECE;
+	GoToXY(x - 8, 13);
+	for (int i = 0; i < 86; ++i)
+		cout << UP_BLACK_PIECE;
+
+	GoToXY(x - 6, y - 1);
+	cout << UP_LEFT_CORNER_PALE_PIECE;
+	GoToXY(x - 6, y + 8);
+	cout << DOWN_LEFT_CORNER_PALE_PIECE;
+
+	GoToXY(x + 75, y - 1);
+	cout << UP_RIGHT_CORNER_PALE_PIECE;
+	GoToXY(x + 75, y + 8);
+	cout << DOWN_RIGHT_CORNER_PALE_PIECE;
+
+	for (int i = 4; i < 12; ++i) {
+		GoToXY(x - 6, i);
+		cout << VERTICAL_PALE_PIECE;
+	}
+	for (int i = 4; i < 12; ++i) {
+		GoToXY(x + 75, i);
+		cout << VERTICAL_PALE_PIECE;
+	}
+	for (int i = 3; i < 13; ++i) {
+		GoToXY(x - 8, i);
+		cout << VERTICAL_BLACK_PIECE;
+	}
+	for (int i = 3; i < 13; ++i) {
+		GoToXY(x + 77, i);
+		cout << VERTICAL_BLACK_PIECE;
+	}
+}
+
+void Game::logoLoseGame() {
+	TextColor(252);
+
+	NoCursorType();
+	int x = 53;
+	int y = 11;
+	int z = 2;
+
+	GoToXY(x, z);		cout << " __   __  _______  __   __    ___      _______  _______  _______    __   __   __ " << endl;
+	GoToXY(x, z + 1);	cout << "|  | |  ||       ||  | |  |  |   |    |       ||       ||       |  |  | |  | |  |" << endl;
+	GoToXY(x, z + 2);	cout << "|  |_|  ||   _   ||  | |  |  |   |    |   _   ||  _____||_     _|  |  | |  | |  |" << endl;
+	GoToXY(x, z + 3);	cout << "|       ||  | |  ||  |_|  |  |   |    |  | |  || |_____   |   |    |  | |  | |  |" << endl;
+	GoToXY(x, z + 4);	cout << "|_     _||  |_|  ||       |  |   |___ |  |_|  ||_____  |  |   |    |__| |__| |__|" << endl;
+	GoToXY(x, z + 5);	cout << "  |   |  |       ||       |  |       ||       | _____| |  |   |     __   __   __ " << endl;
+	GoToXY(x, z + 6);	cout << "  |___|  |_______||_______|  |_______||_______||_______|  |___|    |__| |__| |__|" << endl;
+	x = x + 10;
+	GoToXY(x - 10, z + 15);	cout << "         ^   ^        ";
+	GoToXY(x - 10, z + 16);	cout << "         (o.o) /    ";
+	GoToXY(x - 10, z + 17);	cout << "        /(   )/   ";
+	GoToXY(x - 10, z + 18);	cout << "         | | |     ";
+	GoToXY(x - 10, z + 19);	cout << "        (__)__)    ";
+	for (int i = 0; i < 20; i++)
+	{
+		GoToXY(x + 20 - i, z + 13);	cout << "                  _..-------++._ " << endl;
+		GoToXY(x + 20 - i, z + 14);	cout << "              _.-'/ |      _||  \\\"--._ " << endl;
+		GoToXY(x + 20 - i, z + 15);	cout << "        __.--'`._/_\\j_____/_||___\\    `----. " << endl;
+		GoToXY(x + 20 - i, z + 16);	cout << "   _.--'_____    |          \\     _____    / " << endl;
+		GoToXY(x + 20 - i, z + 17);	cout << "  _j    /,---.\   |        =o |   /,---.\\   |_ " << endl;
+		GoToXY(x + 20 - i, z + 18);	cout << "[__]==// .-. \\\\==`===========/==// .-. \\\\=[__] " << endl;
+		GoToXY(x + 20 - i, z + 19);	cout << "  `-._|\\ `-' /|___\\_________/___|\\ `-' /|_.'    ";
+		GoToXY(x + 20 - i, z + 20);	cout << "        `---'                     `---' ";
+		Sleep(20);
+	}
+	GoToXY(x - 10, z + 15);	cout << "         ^   ^ ";
+	GoToXY(x - 10, z + 16);	cout << "         (x.x) /";
+	GoToXY(x - 10, z + 17);	cout << "        /(   )/";
+	GoToXY(x - 10, z + 18);	cout << "         | | |";
+	GoToXY(x - 10, z + 19);	cout << "        (__)__)";
+}
+
+void Game::logoWinGame() {
+	TextColor(242);
+	NoCursorType();
+	int x = 50;
+	int y = 8;
+
+	GoToXY(x + 34, y + 6);   cout << " __   __  _______  __   __    _     _  ___   __    _    __   __   __ " << endl;
+	GoToXY(x + 34, y + 7);	 cout << "|  | |  ||       ||  | |  |  | | _ | ||   | |  |  | |  |  | |  | |  |" << endl;
+	GoToXY(x + 34, y + 8);	 cout << "|  |_|  ||   _   ||  | |  |  | || || ||   | |   |_| |  |  | |  | |  |" << endl;
+	GoToXY(x + 34, y + 9);   cout << "|       ||  | |  ||  |_|  |  |       ||   | |       |  |  | |  | |  |" << endl;
+	GoToXY(x + 34, y + 10);	 cout << "|_     _||  |_|  ||       |  |       ||   | |  _    |  |__| |__| |__|" << endl;
+	GoToXY(x + 34, y + 11);	 cout << "  |   |  |       ||       |  |   _   ||   | | | |   |   __   __   __ " << endl;
+	GoToXY(x + 34, y + 12);	 cout << "  |___|  |_______||_______|  |__| |__||___| |_|  |__|  |__| |__| |__|" << endl;
+	TextColor(248);
+	GoToXY(x - 20, y);       cout << R"(                 .__.--"""-,)" << endl;
+	GoToXY(x - 20, y + 1);   cout << R"(               .'         `\)" << endl;
+	GoToXY(x - 20, y + 2);   cout << R"(              /   _         \)" << endl;
+	GoToXY(x - 20, y + 3);   cout << R"( .-""-.       |  (O\.--.-.-/O)          .-""-.)" << endl;
+	GoToXY(x - 20, y + 4);   cout << R"(/ O O  \      .\|(_._.__._.__)         /  O O \)" << endl;
+	GoToXY(x - 20, y + 5);   cout << R"(|O .-.  \    (   )   0 _ 0   \        /  .-. O|)" << endl;
+	GoToXY(x - 20, y + 6);   cout << R"(\ (   )  '.   `-|     (_)     |     .'  (   ) /)" << endl;
+	GoToXY(x - 20, y + 7);   cout << R"( '.`-'     '-./`|             |`\.-'     '-'.')" << endl;
+	GoToXY(x - 20, y + 8);   cout << R"(   \         |  \   \     /   /  |         /)" << endl;
+	GoToXY(x - 20, y + 9);   cout << R"(    \        \   '.  '._.'  .'   /        /)" << endl;
+	GoToXY(x - 20, y + 10);  cout << R"(     \        '.   `'-----'`   .'        /)" << endl;
+	GoToXY(x - 20, y + 11);  cout << R"(      \   .'    '-._        .-'\   '.   /)" << endl;
+	GoToXY(x - 20, y + 12);  cout << R"(       |/`          `'''''')    )    `\|)" << endl;
+
+}
 
 void Game::fillMenu() {
 	TextColor(240);
@@ -166,9 +377,46 @@ void Game::fillMenu() {
 	}
 }
 
+void Game::loadingBar() {
+	TextColor(240);
+	NoCursorType();
+
+	int x = 61;
+	int y = 18;
+	for (int i = 18; i < 28; ++i) {
+		GoToXY(40, i);
+		for (int j = 0; j < 100; ++j) {
+			cout << " ";
+		}
+	}
+
+	y = 20;
+	GoToXY(80, y - 1);	cout << "LOADING...";
+	GoToXY(x - 1, y);
+	for (int i = 0; i < 70; ++i)
+		cout << DOWN_BLACK_PIECE;
+
+	GoToXY(x - 1, y + 2);
+	for (int i = 0; i < 70; ++i)
+		cout << UP_BLACK_PIECE;
+
+	GoToXY(x - 1, y + 1);
+	cout << VERTICAL_BLACK_PIECE;
+	GoToXY(x + 68, y + 1);
+	cout << VERTICAL_BLACK_PIECE;
+
+	GoToXY(x, y + 1);
+	for (int i = 0; i < 68; ++i) {
+		Sleep(20);
+		cout << char(178);
+	}
+
+	while (_kbhit())
+		_getch();
+}
 
 void Game::settings() {
-	NoCursor();
+	NoCursorType();
 	TextColor(240);
 	fillMenu();
 	int x = 84;
@@ -261,7 +509,7 @@ void Game::settings() {
 				}
 				else {
 					TextColor(240);
-					GoToXY(x + 13, y + 3); cout << "MUTE";
+					GoToXY(x + 13, y + 3); cout << "OFF";
 					PlaySound(NULL, NULL, SND_ASYNC);
 				}
 			}
@@ -302,13 +550,13 @@ void Game::settings() {
 }
 
 void Game::menu() {
-	
+
 	while (true) {
 		clrscr();
-		CRLogo();
+		logoCrossyRoad();
 		if (checkMute == false)
 			PlaySound(TEXT("Sound\\Theme.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-		NoCursor();
+		NoCursorType();
 		TextColor(240);
 		int x = 84;
 		int y = 18;
@@ -364,7 +612,7 @@ void Game::menu() {
 				TextColor(15);
 				GoToXY(x + 6, y + 1); cout << " NEW GAME ";
 				if (choice == KEY_ENTER) {
-				
+					//loadingBar();
 					TextColor(240);
 					newGame();
 					break;
@@ -399,8 +647,8 @@ void Game::menu() {
 		while (true) {
 			if (checkLoadGame == true) {
 				clrscr();
-				//CRLogo();
-				//loadingBar();
+				logoCrossyRoad();
+				loadingBar();
 				TextColor(240);
 				newGame();
 			}
@@ -410,45 +658,8 @@ void Game::menu() {
 	}
 }
 
-
-void Game::loseLogo() {
-	TextColor(252);
-
-	NoCursor();
-	int x = 53;
-	int y = 11;
-	int z = 2;
-
-	GoToXY(x, z);		cout << " __   __  _______  __   __    ___      _______  _______  _______    __   __   __ " << endl;
-	GoToXY(x, z + 1);	cout << "|  | |  ||       ||  | |  |  |   |    |       ||       ||       |  |  | |  | |  |" << endl;
-	GoToXY(x, z + 2);	cout << "|  |_|  ||   _   ||  | |  |  |   |    |   _   ||  _____||_     _|  |  | |  | |  |" << endl;
-	GoToXY(x, z + 3);	cout << "|       ||  | |  ||  |_|  |  |   |    |  | |  || |_____   |   |    |  | |  | |  |" << endl;
-	GoToXY(x, z + 4);	cout << "|_     _||  |_|  ||       |  |   |___ |  |_|  ||_____  |  |   |    |__| |__| |__|" << endl;
-	GoToXY(x, z + 5);	cout << "  |   |  |       ||       |  |       ||       | _____| |  |   |     __   __   __ " << endl;
-	GoToXY(x, z + 6);	cout << "  |___|  |_______||_______|  |_______||_______||_______|  |___|    |__| |__| |__|" << endl;
-
-}
-
-void Game::WinLogo() {
-	TextColor(242);
-	NoCursor();
-	int x = 50;
-	int y = 8;
-
-	GoToXY(x + 3, y + 6);    cout << " __   __  _______  __   __    _     _  _______   __    _    __   __   __ " << endl;
-	GoToXY(x + 3, y + 7);	 cout << "|  | |  ||       ||  | |  |  | | _ | ||       | |  |  | |  |  | |  | |  |" << endl;
-	GoToXY(x + 3, y + 8);	 cout << "|  |_|  ||   _   ||  | |  |  | || || ||   _   | |   |_| |  |  | |  | |  |" << endl;
-	GoToXY(x + 3, y + 9);    cout << "|       ||  | |  ||  |_|  |  |       ||  | |  | |       |  |  | |  | |  |" << endl;
-	GoToXY(x + 3, y + 10);	 cout << "|_     _||  |_|  ||       |  |       ||  |_|  | |  _    |  |__| |__| |__|" << endl;
-	GoToXY(x + 3, y + 11);	 cout << "  |   |  |       ||       |  |   _   ||       | | | |   |   __   __   __ " << endl;
-	GoToXY(x + 3, y + 12);	 cout << "  |___|  |_______||_______|  |__| |__||_______| |_|  |__|  |__| |__| |__|" << endl;
-	
-	
-
-}
-
 void Game::newGame() {
-	NoCursor();
+	NoCursorType();
 	TextColor(240);
 
 	if (checkLoadGame == false) {
@@ -463,6 +674,7 @@ void Game::newGame() {
 
 	if (checkLoadGame == false)
 		map.initializeMap();
+
 	map.initialRender();
 
 	checkLoadGame = false;
@@ -486,7 +698,7 @@ void Game::newGame() {
 			map.generateMap(frameTime);
 		}
 		else if (checkPauseGame == true) {
-			TextColor(246); GoToXY(133, 23); cout << MIDDLE_SMALL_BLACK_PIECE << " PAUSE GAME " << endl;
+			TextColor(12); GoToXY(133, 23); cout << MIDDLE_SMALL_BLACK_PIECE << " PAUSE GAME " << endl;
 			TextColor(240);
 			GoToXY(134, 25); cout << " RESUME " << endl;
 			GoToXY(134, 27); cout << "  EXIT  " << endl;
@@ -513,7 +725,7 @@ void Game::newGame() {
 					GoToXY(134, 25); cout << " RESUME " << endl;
 					if (choice == KEY_ENTER) {
 						checkPauseGame = false;
-						TextColor(240);
+						TextColor(0);
 						GoToXY(133, 23); cout << "             " << endl;
 						GoToXY(134, 25); cout << "        " << endl;
 						GoToXY(134, 27); cout << "        " << endl;
@@ -526,7 +738,7 @@ void Game::newGame() {
 					GoToXY(134, 27); cout << "  EXIT  " << endl;
 					if (choice == KEY_ENTER) {
 						checkPauseGame = false;
-						TextColor(240);
+						TextColor(0);
 						GoToXY(133, 23); cout << "             " << endl;
 						GoToXY(134, 25); cout << "        " << endl;
 						GoToXY(134, 27); cout << "        " << endl;
@@ -596,6 +808,7 @@ void Game::newGame() {
 			if (key == 'D' || key == 'd') {
 				map.updatePosPlayer('D');
 			}
+
 			map.drawPlayer();
 		}
 
@@ -605,10 +818,10 @@ void Game::newGame() {
 			TextColor(240);
 			clrscr();
 			PlaySound(TEXT("Sound\\GameOver.wav"), NULL, SND_FILENAME | SND_ASYNC);
-			for (int i = 0; i < 16; ++i) {
+			for (int i = 0; i < 5; ++i) {
 				clrscr();
 				TextColor(i);
-				loseLogo();
+				logoLoseGame();
 				Sleep(140);
 			}
 			while (_kbhit())
@@ -626,12 +839,12 @@ void Game::newGame() {
 				for (int i = 0; i < 16; ++i) {
 					clrscr();
 					TextColor(i);
-					WinLogo();
+					logoWinGame();
 					Sleep(140);
 				}
 				while (_kbhit())
 					_getch();
-				GoToXY(77, 22);		cout << "*** Press any key to continue ***";
+				GoToXY(94, 22);		cout << "*** Press any key to continue ***";
 				TextColor(240);
 				_getch();
 				return;
@@ -639,7 +852,7 @@ void Game::newGame() {
 
 			round++;
 			PlaySound(TEXT("Sound\\LevelUp.wav"), NULL, SND_FILENAME | SND_ASYNC);
-			TextColor(250);
+
 			GoToXY(57, 2); cout << "LEVEL UP!!!";
 			Sleep(1500);
 			TextColor(250);
@@ -659,23 +872,37 @@ void Game::newGame() {
 			while (_kbhit())
 				_getch();
 		}
+
 	}
 }
-
-
 vector<string> showListFiles() {
 	TextColor(240);
+	ifstream filein1("Data\\empty.txt");
+	if (!filein1) {
+		cout << "\nERROR";
+	}
+
+	string n1;
+
+	vector<string>a;
+	while (!filein1.eof()) {
+		getline(filein1, n1);
+		a.push_back(n1);
+	}
+	filein1.close();
 	ifstream filein("Data\\listFiles.txt");
 	if (!filein) {
 		cout << "\nERROR";
 	}
 
 	string n;
-	vector<string>a;
-	while (!filein.eof()) {
-		getline(filein, n);
-		a.push_back(n);
 
+
+	int i = 0;
+	while (getline(filein, n)) {
+
+		a.erase(a.begin() + a.size() - 1);
+		a.insert(a.begin() + 0, n);
 	}
 
 	filein.close();
@@ -690,127 +917,12 @@ vector<string> showListFiles() {
 	return a;
 }
 
-
-void Game::logoLoadGame() {
-	NoCursor();
-	TextColor(240);
-	clrscr();
-	int x = 45;
-	int y = 4;
-
-	GoToXY(x - 2, y);		cout << " ___      _______  _______  ______   ___   __    _  _______    _______  _______  __   __  _______ " << endl;
-	GoToXY(x - 2, y + 1);	cout << "|   |    |       ||   _   ||      | |   | |  |  | ||       |  |       ||   _   ||  |_|  ||       |" << endl;
-	GoToXY(x - 2, y + 2);	cout << "|   |    |   _   ||  |_|  ||  _    ||   | |   |_| ||    ___|  |    ___||  |_|  ||       ||    ___|" << endl;
-	GoToXY(x - 2, y + 3);	cout << "|   |    |  | |  ||       || | |   ||   | |       ||   | __   |   | __ |       ||       ||   |___ " << endl;
-	GoToXY(x - 2, y + 4);	cout << "|   |___ |  |_|  ||       || |_|   ||   | |  _    ||   ||  |  |   ||  ||       ||       ||    ___|" << endl;
-	GoToXY(x - 2, y + 5);	cout << "|       ||       ||   _   ||       ||   | | | |   ||   |_| |  |   |_| ||   _   || ||_|| ||   |___ " << endl;
-	GoToXY(x - 2, y + 6);	cout << "|_______||_______||__| |__||______| |___| |_|  |__||_______|  |_______||__| |__||_|   |_||_______|" << endl;
-
-	GoToXY(x - 8, y - 2);
-	for (int i = 0; i < 110; ++i)
-		cout << DOWN_BLACK_PIECE;
-	GoToXY(x - 5, y - 1);
-	for (int i = 0; i < 105; ++i)
-		cout << HORIZONTAL_PALE_PIECE;
-	GoToXY(x - 5, y + 8);
-	for (int i = 0; i < 105; ++i)
-		cout << HORIZONTAL_PALE_PIECE;
-	GoToXY(x - 8, 13);
-	for (int i = 0; i < 110; ++i)
-		cout << UP_BLACK_PIECE;
-
-	GoToXY(x - 6, y - 1);
-	cout << UP_LEFT_CORNER_PALE_PIECE;
-	GoToXY(x - 6, y + 8);
-	cout << DOWN_LEFT_CORNER_PALE_PIECE;
-
-	GoToXY(x + 99, y - 1);
-	cout << UP_RIGHT_CORNER_PALE_PIECE;
-	GoToXY(x + 99, y + 8);
-	cout << DOWN_RIGHT_CORNER_PALE_PIECE;
-
-	for (int i = 4; i < 12; ++i) {
-		GoToXY(x - 6, i);
-		cout << VERTICAL_PALE_PIECE;
-	}
-	for (int i = 4; i < 12; ++i) {
-		GoToXY(x + 99, i);
-		cout << VERTICAL_PALE_PIECE;
-	}
-	for (int i = 3; i < 13; ++i) {
-		GoToXY(x - 8, i);
-		cout << VERTICAL_BLACK_PIECE;
-	}
-	for (int i = 3; i < 13; ++i) {
-		GoToXY(x + 101, i);
-		cout << VERTICAL_BLACK_PIECE;
-	}
-}
-
-void Game::logoSaveGame() {
-	NoCursor();
-	TextColor(240);
-	clrscr();
-	int x = 59;
-	int y = 4;
-
-	GoToXY(x - 2, y);		cout << " _______  _______  __   __  _______    _______  _______  __   __  _______ " << endl;
-	GoToXY(x - 2, y + 1);	cout << "|       ||   _   ||  | |  ||       |  |       ||   _   ||  |_|  ||       |" << endl;
-	GoToXY(x - 2, y + 2);	cout << "|  _____||  |_|  ||  |_|  ||    ___|  |    ___||  |_|  ||       ||    ___|" << endl;
-	GoToXY(x - 2, y + 3);	cout << "| |_____ |       ||       ||   |___   |   | __ |       ||       ||   |___ " << endl;
-	GoToXY(x - 2, y + 4);	cout << "|_____  ||       ||       ||    ___|  |   ||  ||       ||       ||    ___|" << endl;
-	GoToXY(x - 2, y + 5);	cout << " _____| ||   _   | |     | |   |___   |   |_| ||   _   || ||_|| ||   |___ " << endl;
-	GoToXY(x - 2, y + 6);	cout << "|_______||__| |__|  |___|  |_______|  |_______||__| |__||_|   |_||_______|" << endl;
-
-	GoToXY(x - 8, y - 2);
-	for (int i = 0; i < 86; ++i)
-		cout << DOWN_BLACK_PIECE;
-	GoToXY(x - 5, y - 1);
-	for (int i = 0; i < 81; ++i)
-		cout << HORIZONTAL_PALE_PIECE;
-	GoToXY(x - 5, y + 8);
-	for (int i = 0; i < 81; ++i)
-		cout << HORIZONTAL_PALE_PIECE;
-	GoToXY(x - 8, 13);
-	for (int i = 0; i < 86; ++i)
-		cout << UP_BLACK_PIECE;
-
-	GoToXY(x - 6, y - 1);
-	cout << UP_LEFT_CORNER_PALE_PIECE;
-	GoToXY(x - 6, y + 8);
-	cout << DOWN_LEFT_CORNER_PALE_PIECE;
-
-	GoToXY(x + 75, y - 1);
-	cout << UP_RIGHT_CORNER_PALE_PIECE;
-	GoToXY(x + 75, y + 8);
-	cout << DOWN_RIGHT_CORNER_PALE_PIECE;
-
-	for (int i = 4; i < 12; ++i) {
-		GoToXY(x - 6, i);
-		cout << VERTICAL_PALE_PIECE;
-	}
-	for (int i = 4; i < 12; ++i) {
-		GoToXY(x + 75, i);
-		cout << VERTICAL_PALE_PIECE;
-	}
-	for (int i = 3; i < 13; ++i) {
-		GoToXY(x - 8, i);
-		cout << VERTICAL_BLACK_PIECE;
-	}
-	for (int i = 3; i < 13; ++i) {
-		GoToXY(x + 77, i);
-		cout << VERTICAL_BLACK_PIECE;
-	}
-}
-
 void Game::loadGame() {
-	clrscr();
 	logoLoadGame();
 	int x = 61;
 	int y = 18;
-	
 	GoToXY(x + 1, y + 1);
-	cout << "Choose your file (Press ESC to return): ";
+	cout << "Choose your file: ";
 	vector<string> list = showListFiles();
 
 
@@ -854,11 +966,20 @@ void Game::loadGame() {
 
 		if (choice == KEY_DOWN || choice == 'S' || choice == 's') {
 			temp++;
+			/*int tempx = (temp) * 2 - 1;
+
+
+
+			TextColor(15);
+			GoToXY(x2 - 22, y2 + tempx + 2);
+			cout << list[temp - 1];*/
 
 			if (temp > list.size()) {
 				temp = 1;
 				//tempx = temp * 2 + 1;
 			}
+
+
 		}
 		if (choice == KEY_UP || choice == 'W' || choice == 'w') {
 			temp--;
@@ -870,6 +991,9 @@ void Game::loadGame() {
 		}
 
 		if (temp == 1) {
+
+
+
 			TextColor(15);
 			if (temp > list.size()) continue;
 			GoToXY(x2 - 22, y2 + temp * 2 - 1);
@@ -885,6 +1009,7 @@ void Game::loadGame() {
 			GoToXY(x2 - 22, y2 + temp * 2 - 1);
 			cout << list[temp - 1];
 
+
 			if (choice == KEY_ENTER) {
 				file = list[temp - 1];
 				break;
@@ -896,6 +1021,7 @@ void Game::loadGame() {
 			if (temp > list.size()) continue;
 			GoToXY(x2 - 22, y2 + temp * 2 - 1);
 			cout << list[temp - 1];
+
 
 			if (choice == KEY_ENTER) {
 				file = list[temp - 1];
@@ -909,27 +1035,106 @@ void Game::loadGame() {
 			GoToXY(x2 - 22, y2 + temp * 2 - 1);
 			cout << list[temp - 1];
 
-			if (choice == KEY_ENTER) {
-				file = list[temp - 1];
-				break;
-			}
-		}
-		if (temp == 5) {
-			TextColor(15);
-			if (temp > list.size()) continue;
-			GoToXY(x2 - 22, y2 + temp * 2 - 1);
-			cout << list[temp - 1];
+
+
 			if (choice == KEY_ENTER) {
 				file = list[temp - 1];
 				break;
 
 			}
 		}
-		if (choice == 27) {
-			return;
+
+		if (temp == 5) {
+			TextColor(15);
+			if (temp > list.size()) continue;
+			GoToXY(x2 - 22, y2 + temp * 2 - 1);
+			cout << list[temp - 1];
+
+
+
+			if (choice == KEY_ENTER) {
+				file = list[temp - 1];
+				break;
+
+			}
+		}
+		if (temp == 6) {
+			TextColor(15);
+			if (temp > list.size()) continue;
+			GoToXY(x2 - 22, y2 + temp * 2 - 1);
+			cout << list[temp - 1];
+
+
+
+			if (choice == KEY_ENTER) {
+				file = list[temp - 1];
+				break;
+
+			}
+		}
+		if (temp == 7) {
+			TextColor(15);
+			if (temp > list.size()) continue;
+			GoToXY(x2 - 22, y2 + temp * 2 - 1);
+			cout << list[temp - 1];
+
+
+
+			if (choice == KEY_ENTER) {
+				file = list[temp - 1];
+				break;
+
+			}
+		}
+		if (temp == 8) {
+			TextColor(15);
+			if (temp > list.size()) continue;
+			GoToXY(x2 - 22, y2 + temp * 2 - 1);
+			cout << list[temp - 1];
+
+
+
+			if (choice == KEY_ENTER) {
+				file = list[temp - 1];
+				break;
+
+			}
+		}
+		if (temp == 9) {
+			TextColor(15);
+			if (temp > list.size()) continue;
+			GoToXY(x2 - 22, y2 + temp * 2 - 1);
+			cout << list[temp - 1];
+
+
+
+			if (choice == KEY_ENTER) {
+				file = list[temp - 1];
+				break;
+
+			}
+		}
+		if (temp == 10) {
+			TextColor(15);
+			if (temp > list.size()) continue;
+			GoToXY(x2 - 22, y2 + temp * 2 - 1);
+			cout << list[temp - 1];
+		}
+
+
+		if (choice == KEY_ENTER) {
+			file = list[temp - 1];
+			break;
+
 		}
 	}
+
+
+
+
+
 	//Sleep(10000);
+
 	string filename = "Data/";
 	filename += file + ".bin";
 
@@ -939,7 +1144,7 @@ void Game::loadGame() {
 		GoToXY(x + 20, y + 3);
 		cout << "Error! Please try again later!";
 
-		NoCursor();
+		NoCursorType();
 		Sleep(800);
 		while (_kbhit())
 			_getch();
@@ -949,7 +1154,7 @@ void Game::loadGame() {
 		checkLoadGame = true;
 	}
 
-	NoCursor();
+	NoCursorType();
 	Sleep(50);
 	while (_kbhit())
 		_getch();
@@ -985,17 +1190,17 @@ void Game::saveGame() {
 
 	GoToXY(x + 1, y + 1);
 
+
 	cout << "Enter your file here: ";
 
-	Cursor();
+	UnNoCursorType();
 	string file;
 	cin >> file;
 
 
-	NoCursor();
-	
-	Sleep(50);
 
+	NoCursorType();
+	Sleep(50);
 	while (_kbhit())
 		_getch();
 
@@ -1003,10 +1208,9 @@ void Game::saveGame() {
 	GoToXY(x + 22, y + 3);
 	cout << "Save File Successfully!";
 
-	NoCursor();
+	NoCursorType();
 	Sleep(800);
 	while (_kbhit())
 		_getch();
 
 }
-

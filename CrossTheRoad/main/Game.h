@@ -42,32 +42,34 @@ private:
 	Map map;
 	bool mode = true; // default: true		true: easy, false: hard
 	bool checkMute = false;			// Mute backgound song, default: false
-	bool checkLoadGame;
+	bool checkLoadGame;		// default: false
 	bool checkPauseGame;	// default: false
-
 public:
-	
 	void ResizeConsole(int width, int height);
 	void FixConsoleWindow();
-	void CRLogo();
-	void fillMenu();
-	void menu();
 
-	void newGame();
-	void settings();
-	void WinLogo();
-	void loseLogo();
-	void loadGame();
-	void saveGame();
+	void logoCrossyRoad();
 	void logoLoadGame();
 	void logoSaveGame();
+	void logoLoseGame();
+	void logoWinGame();
+
+	void fillMenu();
+	void settings();
+	void loadingBar();
+
+	void menu();
+	void newGame();
+	void loadGame();
+	void saveGame();
 };
 
 void GoToXY(int x, int y);
-void NoCursor();
-void Cursor();
+void NoCursorType();
+void UnNoCursorType();
 void TextColor(int color);
-void clrscr(); 
-vector<string> showListFiles();
+void clrscr();
 std::mt19937::result_type getSeed();
+vector<string> showListFiles();
+
 #endif
