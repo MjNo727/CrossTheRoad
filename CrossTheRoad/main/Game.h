@@ -48,11 +48,11 @@ public:
 	void ResizeConsole(int width, int height);
 	void FixConsoleWindow();
 
-	void logoCrossyRoad();
+	void CRLogo();
 	void logoLoadGame();
 	void logoSaveGame();
-	void logoLoseGame();
-	void logoWinGame();
+	void loseLogo();
+	void winLogo();
 
 	void fillMenu();
 	void settings();
@@ -65,10 +65,11 @@ public:
 };
 
 void GoToXY(int x, int y);
-void NoCursorType();
-void UnNoCursorType();
+void NoCursor();
+void Cursor();
 void TextColor(int color);
 void clrscr();
+void checkReturn();
 std::mt19937::result_type getSeed();
 vector<string> showListFiles();
 

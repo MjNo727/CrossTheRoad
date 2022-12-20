@@ -7,14 +7,14 @@ void GoToXY(int x, int y) {
 	SetConsoleCursorPosition(h, c);
 }
 
-void NoCursorType() {
+void NoCursor() {
 	CONSOLE_CURSOR_INFO Info;
 	Info.bVisible = FALSE;
 	Info.dwSize = 20;
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &Info);
 }
 
-void UnNoCursorType() {
+void Cursor() {
 	CONSOLE_CURSOR_INFO Info;
 	Info.bVisible = TRUE;
 	Info.dwSize = 20;
@@ -81,8 +81,8 @@ std::mt19937::result_type getSeed()
 	return seed;
 }
 
-void Game::logoCrossyRoad() {
-	NoCursorType();
+void Game::CRLogo() {
+	NoCursor();
 	TextColor(240);
 	int x = 45;
 	int y = 4;
@@ -186,7 +186,7 @@ void Game::logoCrossyRoad() {
 }
 
 void Game::logoLoadGame() {
-	NoCursorType();
+	NoCursor();
 	TextColor(240);
 	clrscr();
 	int x = 45;
@@ -242,7 +242,7 @@ void Game::logoLoadGame() {
 }
 
 void Game::logoSaveGame() {
-	NoCursorType();
+	NoCursor();
 	TextColor(240);
 	clrscr();
 	int x = 59;
@@ -297,10 +297,10 @@ void Game::logoSaveGame() {
 	}
 }
 
-void Game::logoLoseGame() {
+void Game::loseLogo() {
 	TextColor(252);
 
-	NoCursorType();
+	NoCursor();
 	int x = 53;
 	int y = 11;
 	int z = 2;
@@ -337,9 +337,9 @@ void Game::logoLoseGame() {
 	GoToXY(x - 10, z + 19);	cout << "        (__)__)";
 }
 
-void Game::logoWinGame() {
+void Game::winLogo() {
 	TextColor(242);
-	NoCursorType();
+	NoCursor();
 	int x = 50;
 	int y = 8;
 
@@ -379,7 +379,7 @@ void Game::fillMenu() {
 
 void Game::loadingBar() {
 	TextColor(240);
-	NoCursorType();
+	NoCursor();
 
 	int x = 61;
 	int y = 18;
@@ -416,7 +416,7 @@ void Game::loadingBar() {
 }
 
 void Game::settings() {
-	NoCursorType();
+	NoCursor();
 	TextColor(240);
 	fillMenu();
 	int x = 84;
@@ -553,10 +553,10 @@ void Game::menu() {
 
 	while (true) {
 		clrscr();
-		logoCrossyRoad();
+		CRLogo();
 		if (checkMute == false)
 			PlaySound(TEXT("Sound\\Theme.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-		NoCursorType();
+		NoCursor();
 		TextColor(240);
 		int x = 84;
 		int y = 18;
@@ -647,7 +647,7 @@ void Game::menu() {
 		while (true) {
 			if (checkLoadGame == true) {
 				clrscr();
-				logoCrossyRoad();
+				//CRLogo();
 				loadingBar();
 				TextColor(240);
 				newGame();
@@ -659,7 +659,7 @@ void Game::menu() {
 }
 
 void Game::newGame() {
-	NoCursorType();
+	NoCursor();
 	TextColor(240);
 
 	if (checkLoadGame == false) {
@@ -698,7 +698,7 @@ void Game::newGame() {
 			map.generateMap(frameTime);
 		}
 		else if (checkPauseGame == true) {
-			TextColor(12); GoToXY(133, 23); cout << MIDDLE_SMALL_BLACK_PIECE << " PAUSE GAME " << endl;
+			TextColor(246); GoToXY(133, 23); cout << MIDDLE_SMALL_BLACK_PIECE << " PAUSE GAME " << endl;
 			TextColor(240);
 			GoToXY(134, 25); cout << " RESUME " << endl;
 			GoToXY(134, 27); cout << "  EXIT  " << endl;
@@ -725,7 +725,7 @@ void Game::newGame() {
 					GoToXY(134, 25); cout << " RESUME " << endl;
 					if (choice == KEY_ENTER) {
 						checkPauseGame = false;
-						TextColor(0);
+						TextColor(240);
 						GoToXY(133, 23); cout << "             " << endl;
 						GoToXY(134, 25); cout << "        " << endl;
 						GoToXY(134, 27); cout << "        " << endl;
@@ -738,7 +738,7 @@ void Game::newGame() {
 					GoToXY(134, 27); cout << "  EXIT  " << endl;
 					if (choice == KEY_ENTER) {
 						checkPauseGame = false;
-						TextColor(0);
+						TextColor(240);
 						GoToXY(133, 23); cout << "             " << endl;
 						GoToXY(134, 25); cout << "        " << endl;
 						GoToXY(134, 27); cout << "        " << endl;
@@ -821,7 +821,7 @@ void Game::newGame() {
 			for (int i = 0; i < 5; ++i) {
 				clrscr();
 				TextColor(i);
-				logoLoseGame();
+				loseLogo();
 				Sleep(140);
 			}
 			while (_kbhit())
@@ -839,7 +839,7 @@ void Game::newGame() {
 				for (int i = 0; i < 16; ++i) {
 					clrscr();
 					TextColor(i);
-					logoWinGame();
+					winLogo();
 					Sleep(140);
 				}
 				while (_kbhit())
@@ -852,10 +852,10 @@ void Game::newGame() {
 
 			round++;
 			PlaySound(TEXT("Sound\\LevelUp.wav"), NULL, SND_FILENAME | SND_ASYNC);
-
+			TextColor(250);
 			GoToXY(57, 2); cout << "LEVEL UP!!!";
 			Sleep(1500);
-			TextColor(250);
+			
 			GoToXY(57, 2); cout << "            ";
 			GoToXY(142, 8); cout << round;
 			TextColor(240);
@@ -922,7 +922,7 @@ void Game::loadGame() {
 	int x = 61;
 	int y = 18;
 	GoToXY(x + 1, y + 1);
-	cout << "Choose your file: ";
+	cout << "Choose your file (Press ESC to return): ";
 	vector<string> list = showListFiles();
 
 
@@ -966,20 +966,11 @@ void Game::loadGame() {
 
 		if (choice == KEY_DOWN || choice == 'S' || choice == 's') {
 			temp++;
-			/*int tempx = (temp) * 2 - 1;
-
-
-
-			TextColor(15);
-			GoToXY(x2 - 22, y2 + tempx + 2);
-			cout << list[temp - 1];*/
 
 			if (temp > list.size()) {
 				temp = 1;
 				//tempx = temp * 2 + 1;
 			}
-
-
 		}
 		if (choice == KEY_UP || choice == 'W' || choice == 'w') {
 			temp--;
@@ -989,11 +980,11 @@ void Game::loadGame() {
 				//tempx = temp * 2 + 1;
 			}
 		}
+		if (choice == 27) {
+			return;
+		}
 
 		if (temp == 1) {
-
-
-
 			TextColor(15);
 			if (temp > list.size()) continue;
 			GoToXY(x2 - 22, y2 + temp * 2 - 1);
@@ -1013,7 +1004,6 @@ void Game::loadGame() {
 			if (choice == KEY_ENTER) {
 				file = list[temp - 1];
 				break;
-
 			}
 		}
 		if (temp == 3) {
@@ -1035,12 +1025,9 @@ void Game::loadGame() {
 			GoToXY(x2 - 22, y2 + temp * 2 - 1);
 			cout << list[temp - 1];
 
-
-
 			if (choice == KEY_ENTER) {
 				file = list[temp - 1];
 				break;
-
 			}
 		}
 
@@ -1051,11 +1038,9 @@ void Game::loadGame() {
 			cout << list[temp - 1];
 
 
-
 			if (choice == KEY_ENTER) {
 				file = list[temp - 1];
 				break;
-
 			}
 		}
 		if (temp == 6) {
@@ -1063,8 +1048,6 @@ void Game::loadGame() {
 			if (temp > list.size()) continue;
 			GoToXY(x2 - 22, y2 + temp * 2 - 1);
 			cout << list[temp - 1];
-
-
 
 			if (choice == KEY_ENTER) {
 				file = list[temp - 1];
@@ -1078,8 +1061,6 @@ void Game::loadGame() {
 			GoToXY(x2 - 22, y2 + temp * 2 - 1);
 			cout << list[temp - 1];
 
-
-
 			if (choice == KEY_ENTER) {
 				file = list[temp - 1];
 				break;
@@ -1091,7 +1072,6 @@ void Game::loadGame() {
 			if (temp > list.size()) continue;
 			GoToXY(x2 - 22, y2 + temp * 2 - 1);
 			cout << list[temp - 1];
-
 
 
 			if (choice == KEY_ENTER) {
@@ -1111,8 +1091,7 @@ void Game::loadGame() {
 			if (choice == KEY_ENTER) {
 				file = list[temp - 1];
 				break;
-
-			}
+				}
 		}
 		if (temp == 10) {
 			TextColor(15);
@@ -1125,14 +1104,8 @@ void Game::loadGame() {
 		if (choice == KEY_ENTER) {
 			file = list[temp - 1];
 			break;
-
 		}
 	}
-
-
-
-
-
 	//Sleep(10000);
 
 	string filename = "Data/";
@@ -1144,7 +1117,7 @@ void Game::loadGame() {
 		GoToXY(x + 20, y + 3);
 		cout << "Error! Please try again later!";
 
-		NoCursorType();
+		NoCursor();
 		Sleep(800);
 		while (_kbhit())
 			_getch();
@@ -1154,7 +1127,7 @@ void Game::loadGame() {
 		checkLoadGame = true;
 	}
 
-	NoCursorType();
+	NoCursor();
 	Sleep(50);
 	while (_kbhit())
 		_getch();
@@ -1192,15 +1165,15 @@ void Game::saveGame() {
 
 
 	cout << "Enter your file here: ";
-
-	UnNoCursorType();
+	thread t(checkReturn);
+	
+	Cursor();
 	string file;
 	cin >> file;
-
-
-
-	NoCursorType();
+	t.join();
+	NoCursor();
 	Sleep(50);
+
 	while (_kbhit())
 		_getch();
 
@@ -1208,9 +1181,24 @@ void Game::saveGame() {
 	GoToXY(x + 22, y + 3);
 	cout << "Save File Successfully!";
 
-	NoCursorType();
+	NoCursor();
 	Sleep(800);
 	while (_kbhit())
 		_getch();
 
+}
+
+void checkReturn()
+{
+	int key = 0;
+	while (1)
+	{
+		if (_kbhit())
+		{
+			key = _getch();
+
+			if (key == 27)
+				break;
+		}
+	}
 }
