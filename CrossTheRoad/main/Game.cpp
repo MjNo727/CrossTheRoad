@@ -298,7 +298,7 @@ void Game::logoSaveGame() {
 }
 
 void Game::loseLogo() {
-	TextColor(252);
+	TextColor(240);
 
 	NoCursor();
 	int x = 53;
@@ -312,7 +312,29 @@ void Game::loseLogo() {
 	GoToXY(x, z + 4);	cout << "|_     _||  |_|  ||       |  |   |___ |  |_|  ||_____  |  |   |    |__| |__| |__|" << endl;
 	GoToXY(x, z + 5);	cout << "  |   |  |       ||       |  |       ||       | _____| |  |   |     __   __   __ " << endl;
 	GoToXY(x, z + 6);	cout << "  |___|  |_______||_______|  |_______||_______||_______|  |___|    |__| |__| |__|" << endl;
+	TextColor(240);
 	x = x + 10;
+	GoToXY(0, y + 12);
+	for (int i = 0; i < 172; ++i)
+		cout << DOWN_BLACK_PIECE;
+	GoToXY(0, y + 24);
+	for (int i = 0; i < 172; ++i)
+		cout << DOWN_BLACK_PIECE;
+
+	GoToXY(0, y + 17);
+	for (int i = 0; i < 140; i++)
+	{
+		if ((i % 5) != 0) cout << UP_BLACK_PIECE;
+		else cout << "  ";
+	}
+	GoToXY(0, y + 16);
+	for (int i = 0; i < 140; i++)
+	{
+		if ((i % 5) != 0) cout << DOWN_BLACK_PIECE;
+		else cout << "  ";
+	}
+
+
 	GoToXY(x - 10, z + 15);	cout << "         ^   ^        ";
 	GoToXY(x - 10, z + 16);	cout << "         (o.o) /    ";
 	GoToXY(x - 10, z + 17);	cout << "        /(   )/   ";
