@@ -95,22 +95,22 @@ void Game::CRLogo() {
 	GoToXY(x - 15, y + 6);	cout << "            \\/___/  \\/_/ \\/___/  \\/___/  \\/___/        \\/_/  \\/_/\\/_/\\/____/     \\/_/\\/ /\\/___/  \\/__/\\/_/\\/__,_ /" << endl;
 
 	GoToXY(x - 45, y + 11);
-	for (int i = 0; i < 185; ++i)
+	for (int i = 0; i < 172; ++i)
 		cout << DOWN_BLACK_PIECE;
 	GoToXY(x - 45, y + 24);
-	for (int i = 0; i < 185; ++i)
+	for (int i = 0; i < 172; ++i)
 		cout << DOWN_BLACK_PIECE;
 
 
 	GoToXY(x - 45, y + 17);
-	for (int i = 0; i < 152; i++)
+	for (int i = 0; i < 142; i++)
 	{
 		if ((i % 5) != 0) cout << UP_BLACK_PIECE;
 		else cout << "  ";
 		
 	}
 	GoToXY(x - 45, y + 16);
-	for (int i = 0; i < 152; i++)
+	for (int i = 0; i < 142; i++)
 	{
 		if ((i % 5) != 0) cout << DOWN_BLACK_PIECE;
 		else cout << "  ";
