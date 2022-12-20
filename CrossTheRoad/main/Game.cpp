@@ -95,23 +95,26 @@ void Game::CRLogo() {
 	GoToXY(x - 15, y + 6);	cout << "            \\/___/  \\/_/ \\/___/  \\/___/  \\/___/        \\/_/  \\/_/\\/_/\\/____/     \\/_/\\/ /\\/___/  \\/__/\\/_/\\/__,_ /" << endl;
 
 	GoToXY(x - 45, y + 11);
-	for (int i = 0; i < 172; ++i)
+	for (int i = 0; i < 185; ++i)
 		cout << DOWN_BLACK_PIECE;
 	GoToXY(x - 45, y + 24);
-	for (int i = 0; i < 172; ++i)
+	for (int i = 0; i < 185; ++i)
 		cout << DOWN_BLACK_PIECE;
 
+
 	GoToXY(x - 45, y + 17);
-	for (int i = 0; i < 140; i++)
+	for (int i = 0; i < 152; i++)
 	{
 		if ((i % 5) != 0) cout << UP_BLACK_PIECE;
 		else cout << "  ";
+		
 	}
 	GoToXY(x - 45, y + 16);
-	for (int i = 0; i < 140; i++)
+	for (int i = 0; i < 152; i++)
 	{
 		if ((i % 5) != 0) cout << DOWN_BLACK_PIECE;
 		else cout << "  ";
+	
 	}
 	GoToXY(x + 40, y + 17);
 	for (int i = 0; i < 20; i++)
@@ -122,12 +125,13 @@ void Game::CRLogo() {
 	for (int i = 0; i < 20; i++)
 	{
 		cout << " ";
+		
 	}
 
 	GoToXY(x - 20, y + 13);	cout << "                   _..-------++._" << endl;
 	GoToXY(x - 20, y + 14);	cout << "               _.-'/ |      _||  \\\"--._" << endl;
 	GoToXY(x - 20, y + 15);	cout << "         __.--'`._/_\\j_____/_||___\\    `----." << endl;
-	GoToXY(x - 20, y + 16);	cout << "    _.--'_____    |          \\     _____    /" << endl;
+	GoToXY(x - 20, y + 16);	cout << "    _.--' _____    |          \\    _____    /" << endl;
 	GoToXY(x - 20, y + 17);	cout << "   _j    /,---.\   |        =o |   /,---.\\   |_" << endl;
 	GoToXY(x - 20, y + 18);	cout << " [__]==// .-. \\\\==`===========/==// .-. \\\\=[__]" << endl;
 	GoToXY(x - 20, y + 19);	cout << "   `-._|\\ `-' /|___\\_________/___|\\ `-' /|_.'    ";
@@ -136,7 +140,7 @@ void Game::CRLogo() {
 	GoToXY(x + 70, y + 13);	cout << "                   _..-------++._" << endl;
 	GoToXY(x + 70, y + 14);	cout << "               _.-'/ |      _||  \\\"--._" << endl;
 	GoToXY(x + 70, y + 15);	cout << "         __.--'`._/_\\j_____/_||___\\    `----." << endl;
-	GoToXY(x + 70, y + 16);	cout << "    _.--'_____    |          \\     _____    /" << endl;
+	GoToXY(x + 70, y + 16);	cout << "    _.--' _____    |          \\    _____    /" << endl;
 	GoToXY(x + 70, y + 17);	cout << "   _j    /,---.\   |        =o |   /,---.\\   |_" << endl;
 	GoToXY(x + 70, y + 18);	cout << " [__]==// .-. \\\\==`===========/==// .-. \\\\=[__]" << endl;
 	GoToXY(x + 70, y + 19);	cout << "   `-._|\\ `-' /|___\\_________/___|\\ `-' /|_.'    ";
@@ -178,6 +182,7 @@ void Game::CRLogo() {
 	for (int i = 3; i < 13; ++i) {
 		GoToXY(x - 23, i);
 		cout << VERTICAL_BLACK_PIECE;
+		
 	}
 	for (int i = 3; i < 13; ++i) {
 		GoToXY(x + 116, i);
@@ -413,7 +418,8 @@ void Game::loadingBar() {
 	}
 
 	y = 20;
-	
+
+	GoToXY(90, y - 1);	cout << "LOADING...";
 	GoToXY(x - 1, y);
 	for (int i = 0; i < 70; ++i)
 		cout << DOWN_BLACK_PIECE;
