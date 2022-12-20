@@ -670,7 +670,7 @@ void Game::menu() {
 			if (checkLoadGame == true) {
 				clrscr();
 				//CRLogo();
-				loadingBar();
+				//loadingBar();
 				TextColor(240);
 				newGame();
 			}
@@ -1185,13 +1185,19 @@ void Game::saveGame() {
 
 	GoToXY(x + 1, y + 1);
 
-
-	cout << "Enter your file here: ";
-	
-	
-	Cursor();
 	string file;
-	cin >> file;
+	cout << "Enter your file here(Press ESC to return, other key to save): ";
+	char choice = _getch();
+	if (choice == 27) {
+		return;
+	}
+	else {
+		Cursor();
+		
+		getline(cin, file);
+	}
+	if (file.empty())return;
+	
 
 	NoCursor();
 	Sleep(50);
