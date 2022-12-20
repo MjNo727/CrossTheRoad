@@ -413,7 +413,7 @@ void Game::loadingBar() {
 	}
 
 	y = 20;
-	GoToXY(80, y - 1);	cout << "LOADING...";
+	
 	GoToXY(x - 1, y);
 	for (int i = 0; i < 70; ++i)
 		cout << DOWN_BLACK_PIECE;
